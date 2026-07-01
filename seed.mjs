@@ -6,14 +6,23 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 /* ====== CONFIG: pega la misma firebaseConfig que en index.html ====== */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROYECTO",
-  storageBucket: "TU_PROYECTO.appspot.com",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyBU7g0qQFv3La_evrvASYgYFQI3t9wimSw",
+  authDomain: "asesoriasjessi.firebaseapp.com",
+  projectId: "asesoriasjessi",
+  storageBucket: "asesoriasjessi.firebasestorage.app",
+  messagingSenderId: "363108342077",
+  appId: "1:363108342077:web:2d2bce050eccd3fd814d54"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 /* ==================================================================== */
 
 const ALUMNA = "Jessi";

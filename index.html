@@ -35,7 +35,6 @@
   .row .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .row .x{color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
 
-  /* detail exercise card */
   .ex{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:16px}
   .ex .name{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:14px}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
@@ -56,12 +55,21 @@
 <body>
   <div id="app"><div class="state">Cargando…</div></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-/* ==== CONFIG: reemplaza con los datos de tu proyecto Supabase ==== */
-const SUPABASE_URL = "https://TU-PROYECTO.supabase.co";
-const SUPABASE_ANON_KEY = "TU-ANON-KEY";
-/* ================================================================ */
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+import { getFirestore, collection, getDocs, query, orderBy }
+  from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+/* ====== CONFIG: pega aquí tu configuración de Firebase ====== */
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_PROYECTO.firebaseapp.com",
+  projectId: "TU_PROYECTO",
+  storageBucket: "TU_PROYECTO.appspot.com",
+  messagingSenderId: "TU_SENDER_ID",
+  appId: "TU_APP_ID"
+};
+/* ============================================================ */
 
 const app = document.getElementById("app");
 let alumna = "Rutina", rutinas = [];
@@ -70,22 +78,21 @@ function esc(s){return (s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<"
 function val(v){return (v===null||v===undefined||v==="----"||v==="")?"—":esc(v);}
 
 async function load(){
-  if(SUPABASE_URL.includes("TU-PROYECTO")){
-    app.innerHTML = `<div class="state"><b>Falta conectar Supabase.</b><br>Abre <b>index.html</b> y pega tu URL y anon key en la sección CONFIG.</div>`;
+  if(firebaseConfig.projectId.startsWith("TU_")){
+    app.innerHTML = `<div class="state"><b>Falta conectar Firebase.</b><br>Abre <b>index.html</b> y pega tu <b>firebaseConfig</b> en la sección CONFIG.</div>`;
     return;
   }
-  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  const [{data:al},{data:rt,error}] = await Promise.all([
-    sb.from("alumnas").select("nombre").limit(1).single(),
-    sb.from("rutinas").select("*, ejercicios(*)").eq("archivada",false).order("orden")
-  ]);
-  if(error){
-    app.innerHTML = `<div class="state"><b>No se pudo cargar la rutina.</b><br>Revisa las políticas de lectura (RLS) en Supabase.</div>`;
-    return;
+  try{
+    const db = getFirestore(initializeApp(firebaseConfig));
+    const snap = await getDocs(query(collection(db,"rutinas"), orderBy("orden")));
+    const docs = snap.docs.map(d=>d.data()).filter(r=>!r.archivada);
+    if(docs.length){ alumna = docs[0].alumna || "Rutina"; }
+    rutinas = docs.map(r=>({...r, ejercicios:(r.ejercicios||[])}));
+    renderList();
+  }catch(e){
+    console.error(e);
+    app.innerHTML = `<div class="state"><b>No se pudo cargar la rutina.</b><br>Revisa las reglas de Firestore (lectura pública) y la config.</div>`;
   }
-  alumna = al?.nombre || "Rutina";
-  rutinas = (rt||[]).map(r=>({...r, ejercicios:(r.ejercicios||[]).sort((a,b)=>a.orden-b.orden)}));
-  renderList();
 }
 
 function renderList(){

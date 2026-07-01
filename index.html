@@ -15,7 +15,7 @@
   html,body{margin:0;background:var(--bg);color:var(--ink)}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
-    max-width:560px;margin:0 auto;padding:22px 20px 60px;
+    max-width:560px;margin:0 auto;padding:22px 20px 100px;
     padding-top:max(22px,env(safe-area-inset-top));
   }
   h1{font-size:30px;font-weight:800;margin:0}
@@ -36,16 +36,26 @@
   .row .x{color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
 
   .ex{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:16px}
-  .ex .name{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:14px}
+  .ex .name-in{font-size:20px;font-weight:700;line-height:1.2;margin-bottom:14px;width:100%;border:none;background:transparent;color:var(--ink);outline:none;border-bottom:1px dashed transparent;padding:2px 0}
+  .ex .name-in:focus{border-bottom-color:var(--chip)}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
   .stat{background:#fff;border:1px solid var(--border);border-radius:14px;padding:10px 8px;text-align:center}
   .stat .k{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
-  .stat .v{font-size:19px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
-  .rest{display:inline-flex;align-items:center;gap:6px;margin-top:12px;background:var(--serie);
-        color:var(--teal);font-weight:700;font-size:14px;padding:6px 12px;border-radius:20px}
-  .note{margin-top:12px;background:var(--note);border-left:3px solid var(--orange);
-        border-radius:10px;padding:11px 14px;font-size:15px;line-height:1.4;color:#5a4b3a}
+  .stat input{width:100%;border:none;background:transparent;text-align:center;font-size:18px;font-weight:700;margin-top:4px;color:var(--ink);outline:none}
+  .stat input:focus{color:var(--teal)}
+  .field{margin-top:12px}
+  .field label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:4px}
+  .field input{width:100%;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:15px;color:var(--ink);background:#fff;outline:none;font-family:inherit}
+  .field input:focus{border-color:var(--chip)}
+  .field.nota input{background:var(--note);border-color:#F0DEC8}
   .head-label{font-size:22px;font-weight:800;margin:24px 0 12px}
+
+  .savebar{position:fixed;left:0;right:0;bottom:0;padding:14px 20px max(14px,env(safe-area-inset-bottom));
+    background:linear-gradient(to top,#fff 70%,rgba(255,255,255,0));max-width:560px;margin:0 auto}
+  .savebar button{width:100%;background:var(--orange);color:#fff;border:none;border-radius:16px;
+    padding:15px;font-size:17px;font-weight:800;cursor:pointer}
+  .savebar button:disabled{opacity:.55;cursor:default}
+  .savebar .msg{text-align:center;font-size:13px;color:var(--muted);margin-top:6px;min-height:16px}
 
   .state{text-align:center;color:var(--muted);padding:60px 20px;line-height:1.5}
   .state b{color:var(--ink)}
@@ -57,7 +67,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-import { getFirestore, collection, getDocs, query, orderBy }
+import { getFirestore, collection, getDocs, query, orderBy, doc, updateDoc }
   from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -69,23 +79,23 @@ const firebaseConfig = {
   appId: "1:363108342077:web:2d2bce050eccd3fd814d54"
 };
 
+const db = getFirestore(initializeApp(firebaseConfig));
 const root = document.getElementById("app");
 let alumna = "Rutina", rutinas = [];
 
 function esc(s){return (s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function val(v){return (v===null||v===undefined||v==="----"||v==="")?"—":esc(v);}
+function att(s){return (s??"").toString().replace(/"/g,"&quot;");}
 
 async function load(){
   try{
-    const db = getFirestore(initializeApp(firebaseConfig));
     const snap = await getDocs(query(collection(db,"rutinas"), orderBy("orden")));
-    const docs = snap.docs.map(d=>d.data()).filter(r=>!r.archivada);
+    const docs = snap.docs.map(d=>({_id:d.id, ...d.data()})).filter(r=>!r.archivada);
     if(docs.length){ alumna = docs[0].alumna || "Rutina"; }
     rutinas = docs.map(r=>({...r, ejercicios:(r.ejercicios||[])}));
     renderList();
   }catch(e){
     console.error(e);
-    root.innerHTML = `<div class="state"><b>No se pudo cargar la rutina.</b><br>Revisa las reglas de Firestore (lectura pública) y la config.</div>`;
+    root.innerHTML = `<div class="state"><b>No se pudo cargar la rutina.</b><br>Revisa las reglas de Firestore y la config.</div>`;
   }
 }
 
@@ -106,23 +116,48 @@ function renderList(){
 
 function renderDetail(i){
   const r = rutinas[i];
-  const ex = r.ejercicios.map(e=>`
-    <div class="ex">
-      <div class="name">${esc(e.nombre)}</div>
+  const ex = r.ejercicios.map((e,j)=>`
+    <div class="ex" data-j="${j}">
+      <input class="name-in" data-k="nombre" value="${att(e.nombre)}" placeholder="Ejercicio" />
       <div class="stats">
-        <div class="stat"><div class="k">Sets</div><div class="v">${val(e.sets)}</div></div>
-        <div class="stat"><div class="k">Reps</div><div class="v">${val(e.reps)}</div></div>
-        <div class="stat"><div class="k">Peso</div><div class="v">${val(e.peso)}</div></div>
+        <div class="stat"><div class="k">Sets</div><input inputmode="numeric" data-k="sets" value="${att(e.sets)}" /></div>
+        <div class="stat"><div class="k">Reps</div><input data-k="reps" value="${att(e.reps)}" /></div>
+        <div class="stat"><div class="k">Peso</div><input data-k="peso" value="${att(e.peso)}" /></div>
       </div>
-      ${e.descanso?`<div class="rest">⏱ Descanso ${esc(e.descanso)}</div>`:""}
-      ${e.nota?`<div class="note">${esc(e.nota)}</div>`:""}
+      <div class="field"><label>Descanso</label><input data-k="descanso" value="${att(e.descanso)}" placeholder="—" /></div>
+      <div class="field nota"><label>Nota</label><input data-k="nota" value="${att(e.nota)}" placeholder="—" /></div>
     </div>`).join("");
   root.innerHTML = `
     <div class="top"><button class="back" aria-label="Volver">‹</button><h1>${esc(r.nombre)}</h1></div>
     <div class="sub">${esc(alumna)}</div>
     <div class="head-label">Ejercicios</div>
-    ${ex}`;
+    ${ex}
+    <div class="savebar"><button id="save">Guardar cambios</button><div class="msg" id="msg"></div></div>`;
+
   root.querySelector(".back").onclick=()=>{renderList(); window.scrollTo(0,0);};
+
+  root.querySelectorAll(".ex").forEach(card=>{
+    const j = +card.dataset.j;
+    card.querySelectorAll("[data-k]").forEach(inp=>{
+      inp.oninput=()=>{
+        let v = inp.value;
+        if(inp.dataset.k==="sets"){ v = v.trim()===""?null:(isNaN(+v)?v:+v); }
+        r.ejercicios[j][inp.dataset.k]=v;
+      };
+    });
+  });
+
+  const btn = root.querySelector("#save"), msg = root.querySelector("#msg");
+  btn.onclick=async ()=>{
+    btn.disabled=true; msg.textContent="Guardando…";
+    try{
+      await updateDoc(doc(db,"rutinas",r._id), { ejercicios: r.ejercicios });
+      msg.textContent="Guardado ✓";
+    }catch(e){
+      console.error(e); msg.textContent="Error al guardar. Revisa las reglas de escritura.";
+    }
+    btn.disabled=false;
+  };
 }
 
 load();

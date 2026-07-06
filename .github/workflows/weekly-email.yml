@@ -1,0 +1,31 @@
+name: Correo semanal de Jessi
+
+on:
+  schedule:
+    # Lunes 06:00 UTC = Lunes 00:00 en México (UTC-6)
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install -r weekly_email/requirements.txt
+
+      - name: Enviar correo con los cambios de la semana
+        env:
+          FIREBASE_PROJECT_ID: asesoriasjessi
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+        run: python weekly_email/weekly_email.py

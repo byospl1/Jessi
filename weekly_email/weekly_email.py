@@ -147,24 +147,81 @@ def serie_str(s):
     return f"{s.get('peso') or '—'} x {s.get('reps') or '—'}"
 
 
-def compute_changes(rutinas):
-    """Devuelve lista de cambios por dia/ejercicio/serie."""
+def progress_exercise(e):
+    """Aplica la progresion a un ejercicio y devuelve el ejercicio actualizado."""
+    before = norm_series(e)
+    after = [progress_serie(s) for s in before]
+    new_e = dict(e)  # conserva nombre, nota y demas campos
+    new_e["series"] = after
+    new_e["sets"] = len(after)
+    if after:
+        new_e["peso"] = after[0]["peso"]
+        new_e["reps"] = after[0]["reps"]
+    diffs = []
+    for k in range(len(after)):
+        b, a = before[k], after[k]
+        if b["peso"] != a["peso"] or str(b["reps"]) != str(a["reps"]):
+            diffs.append({"serie": k + 1, "de": serie_str(b), "a": serie_str(a)})
+    return new_e, diffs
+
+
+def progress_and_apply(rutinas, wk):
+    """
+    Para cada rutina decide si progresa esta semana (control por progWeek para
+    no duplicar), ESCRIBE el cambio real en Firestore y devuelve el resumen
+    exacto de lo que se escribio.
+    """
     changes = []
     for r in rutinas:
+        prog_week = r.get("progWeek")
+        if prog_week == wk:
+            # Ya se progreso esta semana (idempotente): no repetir ni reenviar.
+            continue
+        if not prog_week:
+            # Primera vez: solo fija la linea base, sin cambios ni correo.
+            patch_rutina(r["_id"], {"progWeek": wk})
+            continue
         day_changes = []
+        new_ejercicios = []
         for e in r.get("ejercicios", []) or []:
-            before = norm_series(e)
-            after = [progress_serie(s) for s in before]
-            diffs = []
-            for k in range(len(after)):
-                b, a = before[k], after[k]
-                if b["peso"] != a["peso"] or str(b["reps"]) != str(a["reps"]):
-                    diffs.append({"serie": k + 1, "de": serie_str(b), "a": serie_str(a)})
+            new_e, diffs = progress_exercise(e)
+            new_ejercicios.append(new_e)
             if diffs:
                 day_changes.append({"ejercicio": e.get("nombre") or "Ejercicio", "diffs": diffs})
+        # Escribe el cambio REAL en Firebase (esto es lo que reporta el correo).
+        patch_rutina(r["_id"], {"ejercicios": new_ejercicios, "progWeek": wk})
         if day_changes:
             changes.append({"dia": r.get("nombre") or "Dia", "ejercicios": day_changes})
     return changes
+
+
+# ----------------------- Escritura en Firestore (REST) ---------------------
+
+def encode_value(v):
+    if isinstance(v, bool):
+        return {"booleanValue": v}
+    if isinstance(v, int):
+        return {"integerValue": str(v)}
+    if isinstance(v, float):
+        return {"doubleValue": v}
+    if v is None:
+        return {"nullValue": None}
+    if isinstance(v, str):
+        return {"stringValue": v}
+    if isinstance(v, list):
+        return {"arrayValue": {"values": [encode_value(x) for x in v]}}
+    if isinstance(v, dict):
+        return {"mapValue": {"fields": {k: encode_value(x) for k, x in v.items()}}}
+    return {"stringValue": str(v)}
+
+
+def patch_rutina(doc_id, fields):
+    """Actualiza solo los campos indicados del documento rutinas/{doc_id}."""
+    masks = "&".join(f"updateMask.fieldPaths={k}" for k in fields.keys())
+    url = f"{FIRESTORE_BASE}/rutinas/{doc_id}?key={API_KEY}&{masks}"
+    body = {"fields": {k: encode_value(v) for k, v in fields.items()}}
+    r = requests.patch(url, json=body, timeout=30)
+    r.raise_for_status()
 
 
 # ----------------------- Construccion del correo ---------------------------
@@ -184,7 +241,7 @@ def build_plain(changes, wk):
             for df in ex["diffs"]:
                 lines.append(f"    Serie {df['serie']}: {df['de']}  ->  {df['a']}")
         lines.append("")
-    lines.append("Estos son los nuevos objetivos aplicados automaticamente esta semana.")
+    lines.append("Estos son los cambios que ya se aplicaron en tu rutina en Firebase esta semana.")
     lines.append("Abre la app para verlos y registrar tu progreso.")
     return "\n".join(lines)
 
@@ -218,13 +275,13 @@ padding:26px;border-top:6px solid #C1121F;">
 <h1 style="font-family:Arial,sans-serif;color:#0b0808;letter-spacing:1px;margin:8px 0 2px;">
 RUTINA DE JESSI</h1>
 <div style="font-family:Arial,sans-serif;color:#C9962B;font-weight:bold;
-letter-spacing:2px;font-size:13px;">OBJETIVOS DE LA SEMANA {wk}</div>
+letter-spacing:2px;font-size:13px;">CAMBIOS DE LA SEMANA {wk}</div>
 </div>
 {body}
 <p style="font-family:Arial,sans-serif;color:#888;font-size:12px;
 margin-top:24px;border-top:1px solid #eee;padding-top:14px;">
-Estos objetivos se aplicaron automaticamente esta semana. Abre la app para
-registrar tu progreso. 🏆</p>
+Estos cambios ya se aplicaron en tu rutina en Firebase esta semana. Abre la app
+para registrar tu progreso. 🏆</p>
 </div></body></html>"""
 
 
@@ -251,13 +308,14 @@ def main():
 
     wk = week_label()
     rutinas = fetch_rutinas()
-    changes = compute_changes(rutinas)
+    # Aplica la progresion, la ESCRIBE en Firebase y devuelve el cambio real.
+    changes = progress_and_apply(rutinas, wk)
 
     if not changes:
-        print("No hay cambios de progresion esta semana. No se envia correo.")
+        print("Sin progresion esta semana (linea base o ya aplicada). No se envia correo.")
         return
 
-    subject = f"Rutina de Jessi — objetivos de la semana {wk}"
+    subject = f"Rutina de Jessi — cambios de la semana {wk}"
     plain = build_plain(changes, wk)
     html = build_html(changes, wk)
     send_email(subject, plain, html)

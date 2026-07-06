@@ -2,9 +2,10 @@ name: Correo semanal de Jessi
 
 on:
   schedule:
-    # Lunes 06:00 UTC = Lunes 00:00 en México (UTC-6)
+    # GitHub Actions usa hora UTC. Mexico (CST) = UTC-6.
+    # Lunes 00:00 en Mexico == Lunes 06:00 UTC.
     - cron: "0 6 * * 1"
-  workflow_dispatch: {}
+  workflow_dispatch: {}   # permite ejecutarlo manualmente para probar
 
 jobs:
   send-email:

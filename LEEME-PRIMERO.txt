@@ -1,0 +1,31 @@
+COMO AGREGAR ESTO A TU REPO "Jessi"
+=====================================
+
+Estos archivos van EN EL MISMO repositorio donde tienes index.html.
+
+1) Copia la carpeta  weekly_email/  a la raiz de tu repo.
+
+2) Crea (si no existe) la carpeta  .github/workflows/  en la raiz de tu repo
+   y coloca ahi el archivo:
+       github-workflows/weekly-email.yml   ->   .github/workflows/weekly-email.yml
+
+   (El nombre de la carpeta DEBE ser exactamente  .github/workflows )
+
+Estructura final del repo:
+
+   Jessi/
+   |- index.html
+   |- .github/
+   |   \- workflows/
+   |       \- weekly-email.yml
+   \- weekly_email/
+       |- weekly_email.py
+       |- requirements.txt
+       \- README.md
+
+3) Configura los secretos y pruebalo siguiendo  weekly_email/README.md
+
+Nota: la carpeta se llama ".github" con un punto al inicio. Si tu computadora
+oculta los archivos que empiezan con punto, actívalos o crea la carpeta
+directamente en GitHub (Add file -> Create new file -> escribe
+".github/workflows/weekly-email.yml" y pega el contenido).

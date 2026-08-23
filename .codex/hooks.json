@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd /Users/hugo/Documents/Proyectos/Jessi && git add -A && git diff --cached --quiet || (git commit -m \"auto: update\" -q && git push origin main -q) 2>/dev/null",
+            "statusMessage": "Auto-commit + push a Jessi..."
+          }
+        ]
+      }
+    ]
+  }
+}

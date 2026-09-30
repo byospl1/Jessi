@@ -88,7 +88,7 @@ def fetch_rutinas():
 
 # ----------------------- Logica de progresion (igual a la app) -------------
 
-def bump_weight(peso):
+def bump_weight(peso, unidad_peso=None):
     s = ("" if peso is None else str(peso)).strip()
     if not s:
         return s
@@ -97,20 +97,22 @@ def bump_weight(peso):
     if not m:
         return s
     n = float(m.group(0))
-    inc = 10  # por defecto lb
-    if "kg" in low:
-        inc = 5
-    elif "nivel" in low:
+    inc = 10  # por defecto lb para rutinas antiguas
+    if "nivel" in low:
         inc = 1
+    elif "kg" in low:
+        inc = 5
     elif "lb" in low:
         inc = 10
+    elif str(unidad_peso or "").upper() == "KG":
+        inc = 5
     nv = round((n + inc) * 100) / 100
     if nv == int(nv):
         nv = int(nv)
     return s.replace(m.group(0), str(nv))
 
 
-def progress_serie(se):
+def progress_serie(se, unidad_peso=None):
     try:
         reps = int(str(se.get("reps", "")).strip())
     except (ValueError, TypeError):
@@ -119,7 +121,7 @@ def progress_serie(se):
     reps += 1
     if reps > 12:
         reps = 8
-        peso = bump_weight(peso)
+        peso = bump_weight(peso, unidad_peso)
     return {"peso": peso, "reps": str(reps)}
 
 
@@ -143,14 +145,25 @@ def norm_series(e):
     return [{"peso": peso, "reps": reps} for _ in range(n)]
 
 
-def serie_str(s):
-    return f"{s.get('peso') or '—'} x {s.get('reps') or '—'}"
+def serie_str(s, unidad_peso=None):
+    peso = str(s.get("peso") or "—")
+    low = peso.lower()
+    has_unit = "kg" in low or "lb" in low
+    unit = "kg" if "kg" in low else ("lb" if "lb" in low else str(unidad_peso or "").lower())
+    if unit in ("kg", "lb") and not has_unit and peso != "—":
+        match = re.match(r"^(\s*-?\d+(?:\.\d+)?)(.*)$", peso)
+        peso = f"{match.group(1)} {unit}{match.group(2)}" if match else f"{peso} {unit}"
+    return f"{peso} x {s.get('reps') or '—'}"
 
 
 def progress_exercise(e):
     """Aplica la progresion a un ejercicio y devuelve el ejercicio actualizado."""
     before = norm_series(e)
-    after = [progress_serie(s) for s in before]
+    unidad_peso = e.get("unidadPeso")
+    if not unidad_peso:
+        tagged_weight = next((s["peso"] for s in before if "kg" in s["peso"].lower() or "lb" in s["peso"].lower()), "")
+        unidad_peso = "KG" if "kg" in tagged_weight.lower() else "LB"
+    after = [progress_serie(s, unidad_peso) for s in before]
     new_e = dict(e)  # conserva nombre, nota y demas campos
     new_e["series"] = after
     new_e["sets"] = len(after)
@@ -161,7 +174,7 @@ def progress_exercise(e):
     for k in range(len(after)):
         b, a = before[k], after[k]
         if b["peso"] != a["peso"] or str(b["reps"]) != str(a["reps"]):
-            diffs.append({"serie": k + 1, "de": serie_str(b), "a": serie_str(a)})
+            diffs.append({"serie": k + 1, "de": serie_str(b, unidad_peso), "a": serie_str(a, unidad_peso)})
     return new_e, diffs
 
 

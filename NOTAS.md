@@ -1,6 +1,6 @@
 # Notas internas de coaching — Rutina de Jessi
 
-Registro interno de decisiones sobre la rutina que no van al correo semanal ni a la app. No es contenido para la clienta.
+Registro interno de decisiones sobre la rutina que no forman parte de la app ni de las rutinas visibles para Jessi. No es contenido para la clienta.
 
 ## 2026-08-23 — Reducción a 1 set por ejercicio
 

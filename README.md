@@ -38,6 +38,8 @@ Antes de correrlo, revisa que `firebaseConfig` dentro de `seed.mjs` sea la misma
 ```
 Jessi/
 ├─ index.html              # app principal (frontend monolítico, sin build)
+├─ assets/
+│  └─ lo-siento-jefa.jpeg  # imagen de la cabecera
 ├─ seed.html / seed.mjs     # utilidades para sembrar datos iniciales en Firestore
 ├─ CONTEXT.md               # estado y decisiones del proyecto
 └─ NOTAS.md                 # decisiones internas de coaching

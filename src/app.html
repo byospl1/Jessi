@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (() => {
+    let theme = 'dark';
+    try { theme = localStorage.getItem('jessi-theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
+    document.documentElement.dataset.theme = theme;
+  })();
+</script>
+<script src="377dbde5-8162-4429-b6dc-5d1d20453943"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("13726c12-936c-47a7-a8cb-7f287c8983f2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("12a01552-6dc5-4280-b461-88011fa88391") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5bedda55-8cfa-49a5-943f-0a7af041c9e1") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("747edec4-688e-4483-865a-b756d5f5af33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7ac5a79f-60f6-4e4d-bdb3-79c61a7fdfa3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("747edec4-688e-4483-865a-b756d5f5af33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7ac5a79f-60f6-4e4d-bdb3-79c61a7fdfa3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("747edec4-688e-4483-865a-b756d5f5af33") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("7ac5a79f-60f6-4e4d-bdb3-79c61a7fdfa3") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("69c2a339-b7a0-4e99-b357-6eaeff0cc908") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9adf8fd3-ceea-4110-8f7b-97765196e777") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3d371586-8b6f-4ae7-ac32-1d0f5ea4638b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6a8876db-de86-4108-bc33-a9e61a154f4b") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6471b411-ed6b-4d36-992f-fdfad37048e6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("69c2a339-b7a0-4e99-b357-6eaeff0cc908") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9adf8fd3-ceea-4110-8f7b-97765196e777") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("3d371586-8b6f-4ae7-ac32-1d0f5ea4638b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6a8876db-de86-4108-bc33-a9e61a154f4b") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6471b411-ed6b-4d36-992f-fdfad37048e6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("69c2a339-b7a0-4e99-b357-6eaeff0cc908") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9adf8fd3-ceea-4110-8f7b-97765196e777") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("3d371586-8b6f-4ae7-ac32-1d0f5ea4638b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6a8876db-de86-4108-bc33-a9e61a154f4b") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6471b411-ed6b-4d36-992f-fdfad37048e6") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+  :root {
+    color-scheme: dark;
+    --app-bg: #0b0808;
+    --card-bg: #17100e;
+    --field-bg: #120c0b;
+    --text-strong: #F4ECD8;
+    --text-soft: #E8DFCB;
+    --text-muted: #9a8f82;
+    --text-accent: #F0C64A;
+    --surface-border: #3a2418;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --app-bg: #f5f1e8;
+    --card-bg: #fffdf8;
+    --field-bg: #f7f3ea;
+    --text-strong: #2d261e;
+    --text-soft: #42372b;
+    --text-muted: #6c6257;
+    --text-accent: #805400;
+    --surface-border: #d8cbb7;
+  }
+  html,body{margin:0;background:var(--app-bg);color:var(--text-strong);-webkit-tap-highlight-color:transparent;transition:background-color .2s ease,color .2s ease}
+  input{font-family:inherit}
+  .theme-toggle{position:absolute;top:max(10px,env(safe-area-inset-top));right:12px;z-index:5;min-width:108px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 10px;border:1px solid rgba(240,198,74,.72);border-radius:999px;color:#F4ECD8;background:rgba(11,8,8,.9);box-shadow:0 5px 16px rgba(0,0,0,.25);font-family:Oswald,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+  .theme-toggle:focus-visible{outline:3px solid #fff1b8;outline-offset:3px}
+  .theme-toggle-track{position:relative;display:block;flex:none;width:40px;height:24px;border:1px solid #F0C64A;border-radius:999px;background:#3a2418}
+  .theme-toggle-thumb{position:absolute;top:2px;width:18px;height:18px;border-radius:50%;background:#F0C64A;transition:left .18s ease}
+  @media(prefers-reduced-motion:reduce){.theme-toggle-thumb{transition:none}}
+  button:focus-visible,[role="button"]:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #F0C64A!important;outline-offset:2px}
+  @media(max-width:480px){
+    [data-theme-poster]{min-height:216px!important}
+    [data-theme-poster] .hero-image{top:61px!important;right:9px!important;width:33%!important;max-height:142px!important}
+    [data-theme-poster] .hero-copy{padding:70px 34% 16px 16px!important}
+    [data-theme-poster] .hero-title{font-size:clamp(32px,9vw,42px)!important}
+    [data-theme-poster] .hero-eyebrow{letter-spacing:.5px!important;font-size:8px!important}
+  }
+  @media(max-width:360px){.series-grid{grid-template-columns:26px 56px 44px 44px 44px!important;gap:4px!important}.series-prev{display:none!important}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+  html[data-theme="light"] body{background:var(--app-bg)}
+  html[data-theme="light"] #jessi-app-shell{background:var(--app-bg)!important;background-image:none!important}
+  html[data-theme="light"] [style*="#17100e"],html[data-theme="light"] [style*="23, 16, 14"]{background-color:var(--card-bg)!important;box-shadow:0 8px 22px rgba(48,36,22,.08)!important}
+  html[data-theme="light"] [style*="#120c0b"],html[data-theme="light"] [style*="18, 12, 11"],html[data-theme="light"] [style*="#1e130c"],html[data-theme="light"] [style*="30, 19, 12"]{background-color:var(--field-bg)!important}
+  html[data-theme="light"] [style*="#2a1a08"],html[data-theme="light"] [style*="42, 26, 8"]{background:#fff1dd!important;background-image:none!important;border-color:#d5b98c!important}
+  html[data-theme="light"] [style*="color:#F4ECD8"],html[data-theme="light"] [style*="color: #F4ECD8"],html[data-theme="light"] [style*="color: rgb(244, 236, 216)"],html[data-theme="light"] [style*="color:#E8DFCB"],html[data-theme="light"] [style*="color: #E8DFCB"],html[data-theme="light"] [style*="color: rgb(232, 223, 203)"]{color:var(--text-strong)!important}
+  html[data-theme="light"] [style*="color:#9a8f82"],html[data-theme="light"] [style*="color: #9a8f82"],html[data-theme="light"] [style*="color: rgb(154, 143, 130)"],html[data-theme="light"] [style*="color:#8a7f70"],html[data-theme="light"] [style*="color: rgb(138, 127, 112)"],html[data-theme="light"] [style*="color:#5a4a3a"],html[data-theme="light"] [style*="color: rgb(90, 74, 58)"],html[data-theme="light"] [style*="color:#c9b8a2"],html[data-theme="light"] [style*="color: rgb(201, 184, 162)"],html[data-theme="light"] [style*="color:#9a6a4a"],html[data-theme="light"] [style*="color: rgb(154, 106, 74)"]{color:var(--text-muted)!important}
+  html[data-theme="light"] [style*="color:#F0C64A"],html[data-theme="light"] [style*="color: #F0C64A"],html[data-theme="light"] [style*="color: rgb(240, 198, 74)"],html[data-theme="light"] [style*="color:#C9962B"],html[data-theme="light"] [style*="color: #C9962B"],html[data-theme="light"] [style*="color: rgb(201, 150, 43)"]{color:var(--text-accent)!important}
+  html[data-theme="light"] [style*="#3a2418"],html[data-theme="light"] [style*="58, 36, 24"],html[data-theme="light"] [style*="#5a3410"],html[data-theme="light"] [style*="90, 52, 16"]{border-color:var(--surface-border)!important}
+  html[data-theme="light"] [data-theme-poster] [style*="color:#F4ECD8"],html[data-theme="light"] [data-theme-poster] [style*="color: rgb(244, 236, 216)"],html[data-theme="light"] [data-theme-poster] [style*="color:#F0C64A"],html[data-theme="light"] [data-theme-poster] [style*="color: rgb(240, 198, 74)"]{color:#F4ECD8!important}
+  html[data-theme="light"] [style*="linear-gradient(135deg,#C1121F,#7d0a12)"][style*="color:#F0C64A"]{color:#F0C64A!important}
+  html[data-theme="light"] input::placeholder,html[data-theme="light"] textarea::placeholder{color:#827669;opacity:1}
+  @keyframes impactIn{0%{opacity:0;transform:translateY(16px) scale(1.18) rotate(-1.4deg)}55%{opacity:1;transform:translateY(0) scale(.965) rotate(.5deg)}78%{transform:scale(1.01) rotate(-.2deg)}100%{transform:translateY(0) scale(1) rotate(0)}}
+  @keyframes bounceIn{0%{opacity:0;transform:translateY(28px) scale(.94)}60%{opacity:1;transform:translateY(-6px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
+  @keyframes sunspin{to{transform:translateX(-50%) rotate(360deg)}}
+  @keyframes titleSlam{0%{opacity:0;transform:scale(1.45);letter-spacing:10px}55%{opacity:1;transform:scale(.97);letter-spacing:1px}100%{transform:scale(1)}}
+  @keyframes bellRing{0%,100%{transform:rotate(0)}18%{transform:rotate(22deg)}38%{transform:rotate(-17deg)}58%{transform:rotate(12deg)}78%{transform:rotate(-7deg)}}
+  @keyframes ringWave{0%{transform:scale(.35);opacity:.75}100%{transform:scale(2.6);opacity:0}}
+  @keyframes bellPop{0%{transform:scale(.4);opacity:0}55%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+</style>
+</helmet>
+<div id="jessi-app-shell" style="min-height:100vh;background:#0b0808;background-image:radial-gradient(140% 62% at 50% 0%, rgba(125,10,18,.20), transparent 62%)">
+  <div style="max-width:600px;margin:0 auto;position:relative">
+
+    <!-- ===== HERO / POSTER HEADER ===== -->
+    <div data-theme-poster style="position:relative;overflow:hidden;border-bottom:3px solid #F0C64A;min-height:280px">
+      <img class="hero-image" src="assets/lo-siento-jefa.jpeg" alt="Meme de un perrito que dice: Lo siento jefa, pero lo del gimnasio no fue una etapa" loading="eager" decoding="async" style="position:absolute;top:54px;right:8px;display:block;width:42%;max-width:230px;height:auto;max-height:200px;object-fit:contain;object-position:center;opacity:.98">
+      <button type="button" role="switch" aria-checked="{{ themeIsLight }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" sc-camel-on-click="{{ toggleTheme }}" class="theme-toggle">
+        <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb" style="{{ themeThumbStyle }}"></span></span>
+        <span>{{ themeText }}</span>
+      </button>
+      <sc-if value="{{ sunburst }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;left:50%;top:-45%;width:170%;height:210%;transform:translateX(-50%);pointer-events:none;opacity:.11;background:repeating-conic-gradient(from 0deg at 50% 50%, #F0C64A 0deg 5deg, transparent 5deg 10deg);animation:sunspin 70s linear infinite"></div>
+      </sc-if>
+      <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 6%, rgba(240,198,74,.10), transparent 55%),linear-gradient(90deg, rgba(11,8,8,.9) 0%, rgba(11,8,8,.68) 48%, rgba(11,8,8,0) 78%)"></div>
+      <div class="hero-copy" style="position:relative;pointer-events:none;text-align:left;padding:74px 44% 22px 20px">
+        <div style="font-size:24px;letter-spacing:8px;margin-bottom:8px">🎭🤼🎭</div>
+        <div class="hero-eyebrow" style="font-family:Oswald;font-weight:600;font-size:9px;line-height:1.4;letter-spacing:.8px;color:#F0C64A;margin-bottom:8px">ASESORÍAS JESSI · TEMPORADA 2026</div>
+        <h1 class="hero-title" style="font-family:Anton;font-size:clamp(36px,10vw,50px);line-height:.9;color:#F4ECD8;margin:0;text-transform:uppercase;letter-spacing:1px;text-shadow:0 3px 0 #7d0a12,0 7px 18px rgba(0,0,0,.55);animation:titleSlam .6s cubic-bezier(.2,.85,.3,1.1) both">Rutina<br>de Jessi</h1>
+        <div style="display:inline-block;max-width:100%;margin-top:12px;font-family:Oswald;font-weight:700;font-size:9px;line-height:1.25;letter-spacing:1px;color:#0b0808;background:#F0C64A;padding:5px 8px;border-radius:20px;box-shadow:0 4px 12px rgba(240,198,74,.25)">PROGRAMA DE ENTRENAMIENTO</div>
+      </div>
+    </div>
+
+    <!-- ===== LOADING ===== -->
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div style="text-align:center;padding:72px 20px">
+        <div style="font-size:36px;display:inline-block;animation:bellRing 1.2s ease-in-out infinite">🔔</div>
+        <div style="margin-top:14px;font-family:Oswald;font-weight:600;letter-spacing:3px;font-size:13px;color:#F0C64A">PREPARANDO EL RING…</div>
+      </div>
+    </sc-if>
+
+    <!-- ===== ERROR ===== -->
+    <sc-if value="{{ error }}">
+      <div style="text-align:center;padding:60px 26px;color:#9a8f82;font-family:'DM Sans';line-height:1.6">
+        <div style="font-size:42px;margin-bottom:12px">🥊</div>
+        <b style="color:#F4ECD8;font-family:Oswald;letter-spacing:1px;font-size:16px">NO SE PUDO CARGAR LA RUTINA</b><br>
+        Revisa las reglas de Firestore y la configuración.
+      </div>
+    </sc-if>
+
+    <!-- ===== LIST / CARTELERA ===== -->
+    <sc-if value="{{ isList }}">
+      <div style="padding:22px 20px 0">
+        <div style="background:#17100e;border:1.5px solid #C9962B;border-radius:18px;padding:18px 18px 16px;box-shadow:0 12px 28px rgba(0,0,0,.45)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px">
+            <div style="min-width:0">
+              <div style="font-family:Anton;font-size:20px;color:#F4ECD8;letter-spacing:1px;text-transform:uppercase">Progreso de la semana</div>
+              <div style="font-family:Oswald;font-weight:600;font-size:11px;letter-spacing:2px;color:#9a8f82;margin-top:2px">🏆 {{ progress.range }}</div>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:3px;flex:none">
+              <span style="font-family:Anton;font-size:36px;color:#F0C64A;line-height:1">{{ progress.doneCount }}</span>
+              <span style="font-family:Oswald;font-weight:700;font-size:17px;color:#9a8f82">/ {{ progress.total }}</span>
+            </div>
+          </div>
+          <div style="position:relative;height:14px;border-radius:8px;background:#120c0b;border:1px solid #3a2418;overflow:hidden">
+            <div style="{{ progress.fillStyle }}"></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:15px">
+              <sc-for list="{{ days }}" as="day" hint-placeholder-count="4">
+                <button type="button" aria-label="{{ day.progressLabel }}" aria-pressed="{{ day.done }}" sc-camel-on-click="{{ day.toggleDone }}" style="flex:1;cursor:pointer;text-align:center;user-select:none;background:transparent;border:0;min-height:56px">
+                  <div style="{{ day.medalStyle }}">{{ day.medalMark }}</div>
+                  <div style="font-family:Oswald;font-weight:700;font-size:10px;letter-spacing:1px;color:#9a8f82;margin-top:6px">{{ day.short }}</div>
+                </button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ progress.allDone }}">
+            <div style="margin-top:15px;text-align:center;background:linear-gradient(135deg,#C1121F,#7d0a12);border:1px solid #F0C64A;border-radius:12px;padding:11px;font-family:Anton;font-size:17px;letter-spacing:1px;color:#F0C64A;text-transform:uppercase;animation:impactIn .5s cubic-bezier(.2,.85,.3,1.15) both">👑 ¡Campeona de la semana! 🏆</div>
+          </sc-if>
+        </div>
+      </div>
+      <div style="padding:12px 20px 0">
+        <button type="button" sc-camel-on-click="{{ quickDay.open }}" style="width:100%;min-height:48px;border:1.5px solid #F0C64A;border-radius:12px;background:#2a1a08;color:#F0C64A;font-family:Oswald;font-size:13px;font-weight:700;letter-spacing:1px;cursor:pointer">{{ quickDay.label }}</button>
+      </div>
+      <sc-if value="{{ hasSyncMessage }}">
+        <div aria-live="polite" style="padding:8px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'DM Sans';font-size:12px;color:#F0C64A">
+          <span>{{ syncMessage }}</span>
+          <sc-if value="{{ syncError }}"><button type="button" sc-camel-on-click="{{ retrySync }}" style="min-height:44px;padding:7px 10px;border:1px solid #F0C64A;border-radius:8px;background:transparent;color:#F0C64A;cursor:pointer">REINTENTAR</button></sc-if>
+        </div>
+      </sc-if>
+      <div style="padding:14px 20px 0">
+        <button sc-camel-on-click="{{ openHistory }}" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1.5px dashed #3a2418;border-radius:14px;padding:13px;font-family:Oswald;font-weight:700;font-size:13px;letter-spacing:2px;color:#F0C64A;cursor:pointer">📜 HISTORIAL DE SEMANAS ▸</button>
+      </div>
+      <div style="padding:24px 20px 4px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="flex:1;height:2px;background:linear-gradient(90deg,transparent,#C9962B)"></div>
+          <span style="font-family:Anton;font-size:15px;color:#C1121F;letter-spacing:2px;text-transform:uppercase">Cartelera de la semana</span>
+          <div style="flex:1;height:2px;background:linear-gradient(90deg,#C9962B,transparent)"></div>
+        </div>
+      </div>
+      <div style="padding:16px 20px 44px">
+        <sc-for list="{{ days }}" as="day" hint-placeholder-count="4">
+          <div style="{{ day._wrap }}">
+            <div sc-camel-on-click="{{ day.open }}" style="cursor:pointer;position:relative;background:#17100e;border:1.5px solid #C9962B;border-radius:18px;margin-bottom:18px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.5)">
+              <sc-if value="{{ day.done }}">
+                <div style="position:absolute;inset:0;border-radius:18px;border:2px solid #F0C64A;box-shadow:inset 0 0 24px rgba(240,198,74,.32);pointer-events:none;z-index:3"></div>
+              </sc-if>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(135deg,#C1121F,#7d0a12);padding:12px 16px;border-bottom:2px solid #F0C64A">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0">
+                  <span style="font-size:20px">🎭</span>
+                  <span style="font-family:Anton;font-size:24px;color:#F4ECD8;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ day.nombre }}</span>
+                </div>
+                <span style="font-family:Oswald;font-weight:700;font-size:11px;color:#0b0808;background:#F0C64A;border-radius:6px;padding:3px 9px;letter-spacing:1px;flex:none">FUNCIÓN {{ day.funcion }}</span>
+              </div>
+              <div style="padding:12px 16px 4px">
+                <sc-for list="{{ day.ejercicios }}" as="ex" hint-placeholder-count="4">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px solid rgba(201,150,43,.14)">
+                    <span style="font-family:'DM Sans';font-size:15px;color:#E8DFCB;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ ex.nombre }}</span>
+                    <span style="font-family:Oswald;font-weight:700;font-size:14px;color:#F0C64A;flex:none">×{{ ex.sets }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px 14px">
+                <button type="button" sc-camel-on-click="{{ day.toggleDone }}" style="{{ day.toggleStyle }}">{{ day.toggleLabel }}</button>
+                <button type="button" sc-camel-on-click="{{ day.open }}" style="min-height:44px;font-family:Anton;font-size:15px;color:#C1121F;letter-spacing:1px;flex:none;background:transparent;border:0;cursor:pointer">VER RUTINA ▸</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasVideoRequests }}">
+        <div style="padding:0 20px 35px">
+          <div style="font-family:Anton;font-size:18px;color:#F0C64A;letter-spacing:1px;margin-bottom:8px">SOLICITUDES DE VIDEO</div>
+          <sc-for list="{{ videoRequests }}" as="request" hint-placeholder-count="2">
+            <div style="background:#17100e;border:1px solid #3a2418;border-radius:12px;padding:11px 13px;margin-bottom:8px;font-family:'DM Sans';font-size:13px;color:#E8DFCB">
+              <b>{{ request.day }} · {{ request.exercise }}</b><br><span>{{ request.status }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <!-- ===== DETAIL ===== -->
+    <sc-if value="{{ isDetail }}">
+      <div style="padding:18px 20px 0">
+        <button sc-camel-on-click="{{ detail.back }}" style="display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:#F0C64A;font-family:Oswald;font-weight:700;font-size:15px;letter-spacing:1px;cursor:pointer;padding:0;margin-bottom:14px">‹ VOLVER A LA CARTELERA</button>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <span style="font-family:Oswald;font-weight:700;font-size:11px;color:#0b0808;background:#F0C64A;border-radius:6px;padding:3px 9px;letter-spacing:1px">FUNCIÓN {{ detail.funcion }}</span>
+          <span style="font-family:Oswald;font-size:12px;color:#9a8f82;letter-spacing:2px">🎭 JESSI</span>
+        </div>
+        <h2 style="font-family:Anton;font-size:40px;line-height:.96;color:#F4ECD8;margin:2px 0;text-transform:uppercase;letter-spacing:1px">{{ detail.nombre }}</h2>
+        <div style="height:4px;width:64px;background:#C1121F;border-radius:2px;margin:12px 0 16px"></div>
+        <sc-if value="{{ detail.deload }}">
+          <div style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#2a1a08,#17100e);border:1.5px solid #F0C64A;border-radius:12px;padding:11px 14px;margin-bottom:16px">
+            <span style="font-size:20px">🔻</span>
+            <div>
+              <div style="font-family:Anton;font-size:15px;color:#F0C64A;letter-spacing:1px;text-transform:uppercase">Semana de descarga</div>
+              <div style="font-family:'DM Sans';font-size:12px;color:#c9b8a2">Pesos al 50%, mismas reps y series. Tus datos guardados no se tocan.</div>
+            </div>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+          <div style="flex:1;position:relative;height:10px;border-radius:6px;background:#120c0b;border:1px solid #3a2418;overflow:hidden">
+            <div style="{{ detail.exFillStyle }}"></div>
+          </div>
+          <span style="font-family:Oswald;font-weight:700;font-size:13px;letter-spacing:1px;color:#F0C64A;flex:none">{{ detail.exDoneCount }}/{{ detail.exTotal }} ✓</span>
+        </div>
+      </div>
+      <div style="padding:0 20px 4px">
+        <details style="background:#17100e;border:1.5px solid #C9962B;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 8px 20px rgba(0,0,0,.38)">
+          <summary style="display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none">
+            <span style="font-size:16px">🩺</span>
+            <span style="font-family:Anton;font-size:17px;color:#F4ECD8;letter-spacing:1px;text-transform:uppercase">Registro del día ▾</span>
+          </summary>
+          <button type="button" role="checkbox" aria-checked="{{ detail.wellness.periodo }}" sc-camel-on-click="{{ detail.wellness.togglePeriodo }}" style="{{ detail.wellness.periodoStyle }}">
+            <span style="{{ detail.wellness.boxStyle }}">{{ detail.wellness.periodoMark }}</span>
+            <div style="min-width:0">
+              <div style="font-family:'DM Sans';font-weight:700;font-size:15px;color:#F4ECD8">🩸 Periodo menstrual</div>
+              <div style="font-family:'DM Sans';font-size:12px;color:#9a8f82">Marca si hoy estás en tus días</div>
+            </div>
+          </button>
+          <div style="font-family:Oswald;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin:15px 0 7px">💧 HIDRATACIÓN</div>
+          <div style="display:flex;gap:7px">
+            <sc-for list="{{ detail.wellness.hid }}" as="opt" hint-placeholder-count="3">
+              <button type="button" aria-pressed="{{ opt.active }}" sc-camel-on-click="{{ opt.on }}" style="{{ opt.style }}">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+          <div style="font-family:Oswald;font-size:11px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin:15px 0 7px">🧠 ESTRÉS</div>
+          <div style="display:flex;gap:7px">
+            <sc-for list="{{ detail.wellness.est }}" as="opt" hint-placeholder-count="3">
+              <button type="button" aria-pressed="{{ opt.active }}" sc-camel-on-click="{{ opt.on }}" style="{{ opt.style }}">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+        </details>
+      </div>
+      <div style="padding:0 20px">
+        <sc-for list="{{ detail.ejercicios }}" as="ex" hint-placeholder-count="5">
+          <div style="{{ ex._wrap }}">
+            <div style="position:relative;background:#17100e;border:1.5px solid #3a2418;border-radius:16px;padding:16px 16px 6px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.38)">
+              <sc-if value="{{ ex.done }}">
+                <div style="position:absolute;inset:0;border-radius:16px;border:1.5px solid #F0C64A;box-shadow:inset 0 0 20px rgba(240,198,74,.22);pointer-events:none;z-index:2"></div>
+              </sc-if>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;position:relative;z-index:3">
+                <span style="font-family:Oswald;font-weight:700;font-size:12px;color:#0b0808;background:#F0C64A;border-radius:6px;padding:2px 8px;letter-spacing:1px;flex:none">{{ ex.num }}</span>
+                <input value="{{ ex.nombre }}" sc-camel-on-change="{{ ex.onNombre }}" placeholder="Ejercicio" style="{{ ex.nameStyle }}">
+              </div>
+              <div class="series-grid" style="display:grid;grid-template-columns:30px minmax(0,1fr) 56px 48px 44px 44px;gap:5px;align-items:center;padding:0 2px 8px;position:relative;z-index:3">
+                <span style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1px;color:#C9962B">SERIE</span>
+                <span class="series-prev" style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1px;color:#C9962B">⏮ ANTERIOR</span>
+                <select value="{{ ex.unidadPeso }}" sc-camel-on-change="{{ ex.onUnidadPeso }}" aria-label="Unidad de peso de {{ ex.nombre }}" style="width:100%;min-height:44px;box-sizing:border-box;text-align:center;font-family:Oswald;font-weight:700;font-size:10px;color:#F0C64A;background:#120c0b;border:1px solid #3a2418;border-radius:8px;padding:4px 0;outline:none"><option value="">—</option><option value="KG">KG</option><option value="LB">LB</option></select>
+                <span style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1px;color:#C9962B;text-align:center">REP</span>
+                <span></span>
+                <span></span>
+              </div>
+              <sc-for list="{{ ex.series }}" as="se" hint-placeholder-count="3">
+                <div class="series-grid" style="display:grid;grid-template-columns:30px minmax(0,1fr) 56px 48px 44px 44px;gap:5px;align-items:center;margin-bottom:8px;position:relative;z-index:3">
+                  <span style="font-family:Anton;font-size:16px;color:#F0C64A;background:#120c0b;border:1px solid #3a2418;border-radius:8px;text-align:center;padding:7px 0">{{ se.num }}</span>
+                  <span class="series-prev" style="font-family:'DM Sans';font-size:14px;color:#9a8f82;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ se.anterior }}</span>
+                  <input value="{{ se.peso }}" sc-camel-on-change="{{ se.onPeso }}" inputmode="decimal" aria-label="{{ se.weightLabel }}" placeholder="—" style="width:100%;min-height:44px;box-sizing:border-box;text-align:center;font-family:Oswald;font-weight:700;font-size:17px;color:#F4ECD8;background:#120c0b;border:1px solid #3a2418;border-radius:10px;padding:8px 2px;outline:none">
+                  <input value="{{ se.reps }}" sc-camel-on-change="{{ se.onReps }}" inputmode="numeric" aria-label="{{ se.repsLabel }}" placeholder="—" style="width:100%;min-height:44px;box-sizing:border-box;text-align:center;font-family:Oswald;font-weight:700;font-size:17px;color:#F4ECD8;background:#120c0b;border:1px solid #3a2418;border-radius:10px;padding:8px 2px;outline:none">
+                  <button type="button" sc-camel-on-click="{{ se.toggle }}" aria-label="{{ se.checkLabel }}" aria-pressed="{{ se.done }}" style="{{ se.checkStyle }}">{{ se.checkMark }}</button>
+                  <button type="button" sc-camel-on-click="{{ se.remove }}" aria-label="{{ se.removeLabel }}" style="{{ se.removeStyle }}">✕</button>
+                </div>
+              </sc-for>
+              <button sc-camel-on-click="{{ ex.addSerie }}" style="width:100%;margin-top:4px;background:transparent;border:1.5px dashed #C9962B;border-radius:10px;padding:10px;font-family:Oswald;font-weight:700;font-size:12px;letter-spacing:1.5px;color:#F0C64A;cursor:pointer;position:relative;z-index:3">+ AGREGAR SERIE</button>
+              <button type="button" role="checkbox" aria-checked="{{ ex.videoChecked }}" sc-camel-on-click="{{ ex.toggleVideo }}" style="{{ ex.videoToggleStyle }}"><span aria-hidden="true" style="{{ ex.videoCheckStyle }}">{{ ex.videoCheckMark }}</span><span>SOLICITAR VIDEO</span></button>
+              <sc-if value="{{ ex.videoChecked }}"><div style="font-family:'DM Sans';font-size:12px;color:#F0C64A;margin-bottom:8px">{{ ex.videoStatusText }}</div></sc-if>
+              <div style="margin:14px 0 11px;position:relative;z-index:3">
+                <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin-bottom:5px">NOTA</div>
+                <input value="{{ ex.nota }}" sc-camel-on-change="{{ ex.onNota }}" placeholder="—" style="width:100%;box-sizing:border-box;font-family:'DM Sans';font-size:15px;color:#F4ECD8;background:#1e130c;border:1px solid #5a3410;border-radius:10px;padding:9px 11px;outline:none">
+              </div>
+            </div>
+          </div>
+        </sc-for>
+        <div style="height:96px"></div>
+      </div>
+      <div style="position:fixed;left:0;right:0;bottom:0;z-index:20">
+        <div style="max-width:600px;margin:0 auto;padding:14px 20px 20px;background:linear-gradient(to top,#0b0808 66%,rgba(11,8,8,0))">
+          <button sc-camel-on-click="{{ detail.save }}" disabled="{{ detail.saving }}" style="width:100%;border:none;border-radius:14px;padding:16px;font-family:Anton;font-size:20px;letter-spacing:1.5px;color:#0b0808;background:linear-gradient(135deg,#F0C64A,#C9962B);cursor:pointer;box-shadow:0 8px 24px rgba(240,198,74,.28),inset 0 1px 0 rgba(255,255,255,.4);text-transform:uppercase">{{ detail.saveLabel }}</button>
+          <div aria-live="polite" style="text-align:center;font-family:Oswald;font-weight:600;font-size:13px;color:#F0C64A;margin-top:8px;min-height:18px;letter-spacing:.5px">{{ detail.statusMessage }}</div>
+          <sc-if value="{{ detail.syncError }}"><button type="button" sc-camel-on-click="{{ detail.retrySync }}" style="min-height:44px;padding:7px 12px;border:1px solid #F0C64A;border-radius:8px;background:transparent;color:#F0C64A;cursor:pointer">REINTENTAR SINCRONIZACIÓN</button></sc-if>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ===== HISTORIAL ===== -->
+    <sc-if value="{{ isHistory }}">
+      <div style="padding:18px 20px 44px">
+        <button sc-camel-on-click="{{ history.back }}" style="display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:#F0C64A;font-family:Oswald;font-weight:700;font-size:15px;letter-spacing:1px;cursor:pointer;padding:0;margin-bottom:16px">‹ VOLVER A LA CARTELERA</button>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+          <span style="font-family:Oswald;font-weight:700;font-size:11px;color:#0b0808;background:#F0C64A;border-radius:6px;padding:3px 9px;letter-spacing:1px">🏆 PALMARÉS</span>
+        </div>
+        <h2 style="font-family:Anton;font-size:40px;line-height:.96;color:#F4ECD8;margin:6px 0 2px;text-transform:uppercase;letter-spacing:1px">Semanas<br>pasadas</h2>
+        <div style="height:4px;width:64px;background:#C1121F;border-radius:2px;margin:12px 0 22px"></div>
+        <sc-if value="{{ history.loading }}"><div aria-live="polite" style="font-family:'DM Sans';font-size:13px;color:#9a8f82;margin-bottom:14px">Cargando historial…</div></sc-if>
+        <sc-if value="{{ history.loadError }}"><div role="alert" style="font-family:'DM Sans';font-size:13px;color:#C1121F;margin-bottom:14px">No se pudo leer Firebase. Solo se muestran datos disponibles en este dispositivo.</div></sc-if>
+
+        <sc-if value="{{ history.hasWeekOptions }}">
+          <div style="background:#17100e;border:1.5px solid #C9962B;border-radius:16px;padding:16px 16px 18px;margin-bottom:18px;box-shadow:0 8px 20px rgba(0,0,0,.4)">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+              <span style="font-size:16px">📈</span>
+              <span style="font-family:Anton;font-size:17px;color:#F4ECD8;letter-spacing:1px;text-transform:uppercase">Carga por ejercicio</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px">
+              <span style="font-family:'DM Sans';font-size:12px;color:#9a8f82">Serie comparable · escala KG</span>
+              <sc-if value="{{ history.hasVolume }}">
+                <span style="font-family:Oswald;font-weight:700;font-size:11px;letter-spacing:1px;color:#C9962B">{{ history.fromLabel }} – {{ history.toLabel }}</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ history.hasExerciseOptions }}">
+              <label style="display:block;font-family:Oswald;font-weight:700;font-size:11px;color:#C9962B;margin-bottom:6px">EJERCICIO Y DÍA
+                <sc-raw-select value="{{ history.exerciseKey }}" sc-camel-on-change="{{ history.onExerciseChange }}" style="display:block;width:100%;min-height:44px;margin-top:4px;font-family:'DM Sans';font-size:13px;color:#F4ECD8;background:#120c0b;border:1.5px solid #3a2418;border-radius:8px;padding:7px 8px">
+                  <sc-for list="{{ history.exerciseOptions }}" as="opt" hint-placeholder-count="4"><option value="{{ opt.value }}">{{ opt.label }}</option></sc-for>
+                </sc-raw-select>
+              </label>
+            </sc-if>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+              <button type="button" sc-camel-on-click="{{ history.setVolAll }}" style="{{ history.volAllStyle }}">TODO</button>
+              <sc-raw-select value="{{ history.rangeWeek }}" sc-camel-on-change="{{ history.onVolWeekChange }}" style="flex:1;min-width:140px;font-family:Oswald;font-weight:700;font-size:11px;letter-spacing:.5px;color:#F4ECD8;background:#120c0b;border:1.5px solid #3a2418;border-radius:8px;padding:7px 8px;outline:none">
+                <option value="">Elegir semana específica…</option>
+                <sc-for list="{{ history.weekOptions }}" as="wo" hint-placeholder-count="4">
+                  <option value="{{ wo.value }}">{{ wo.label }}</option>
+                </sc-for>
+              </sc-raw-select>
+            </div>
+            <sc-if value="{{ history.hasVolume }}">
+              <div style="display:flex;gap:8px">
+                <div style="flex:none;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;height:150px;padding:2px 0">
+                  <span style="font-family:Oswald;font-weight:700;font-size:10px;color:#C9962B">{{ history.yMaxLabel }}</span>
+                  <span style="font-family:Oswald;font-weight:700;font-size:10px;color:#C9962B">{{ history.yMinLabel }}</span>
+                </div>
+                <div style="flex:1;min-width:0;overflow-x:auto">
+                  <div style="{{ history.containerStyle }}">
+                    <div style="{{ history.areaStyle }}"></div>
+                    <sc-for list="{{ history.segments }}" as="sg" hint-placeholder-count="8">
+                      <div style="{{ sg.style }}"></div>
+                    </sc-for>
+                    <sc-for list="{{ history.dots }}" as="dt" hint-placeholder-count="6">
+                      <button type="button" aria-label="{{ dt.ariaLabel }}" sc-camel-on-click="{{ dt.onClick }}" style="{{ dt.style }}"><span style="{{ dt.dotStyle }}"></span></button>
+                      <sc-if value="{{ dt.hasLabel }}">
+                        <div style="{{ dt.labelStyle }}">{{ dt.labelText }}</div>
+                      </sc-if>
+                    </sc-for>
+                  </div>
+                  <div style="{{ history.xAxisRowStyle }}">
+                    <span style="font-family:Oswald;font-weight:700;font-size:10px;color:#C9962B">{{ history.xFromLabel }}</span>
+                    <span style="font-family:Oswald;font-weight:700;font-size:10px;color:#C9962B">{{ history.xToLabel }}</span>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align:center;font-family:Oswald;font-weight:700;font-size:10px;letter-spacing:1.5px;color:#C9962B;margin-top:8px">SEMANA ISO</div>
+            </sc-if>
+            <sc-if value="{{ history.volEmpty }}">
+              <div style="text-align:center;padding:30px 10px;font-family:'DM Sans';font-size:13px;color:#9a8f82">Sin cargas comparables para esta selección.</div>
+            </sc-if>
+            <div style="font-family:'DM Sans';font-size:11px;line-height:1.5;color:#9a8f82;margin-top:10px">{{ history.chartNote }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ history.notEmpty }}">
+          <div style="margin-bottom:18px;background:#120c0b;border:1.5px solid #7d0a12;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(0,0,0,.4)">
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:4px">
+              <span style="font-size:17px">📊</span>
+              <span style="font-family:Anton;font-size:19px;color:#F4ECD8;letter-spacing:1px;text-transform:uppercase">Análisis de rendimiento</span>
+            </div>
+            <div style="font-family:'DM Sans';font-size:13px;color:#9a8f82;line-height:1.5;margin-bottom:15px">Elige el rango de fechas y genera un resumen de tendencias observables.</div>
+            <div style="font-family:'DM Sans';font-size:12px;color:#9a8f82;line-height:1.5;margin-bottom:12px">Al generar el análisis se enviarán los registros seleccionados a Gemini. Las cargas guardadas pueden ser prescripciones, no sesiones realizadas.</div>
+            <div style="display:flex;gap:10px;margin-bottom:12px">
+              <div style="flex:1">
+                <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin-bottom:5px">DESDE</div>
+                <input type="date" value="{{ history.anFrom }}" sc-camel-on-change="{{ history.onFrom }}" style="width:100%;box-sizing:border-box;font-family:'DM Sans';font-size:14px;color:#F4ECD8;background:#17100e;border:1px solid #3a2418;border-radius:10px;padding:9px 10px;outline:none;color-scheme:dark">
+              </div>
+              <div style="flex:1">
+                <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin-bottom:5px">HASTA</div>
+                <input type="date" value="{{ history.anTo }}" sc-camel-on-change="{{ history.onTo }}" style="width:100%;box-sizing:border-box;font-family:'DM Sans';font-size:14px;color:#F4ECD8;background:#17100e;border:1px solid #3a2418;border-radius:10px;padding:9px 10px;outline:none;color-scheme:dark">
+              </div>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:10px;font-family:'DM Sans';font-size:12px;line-height:1.5;color:#E8DFCB;margin-bottom:12px;cursor:pointer">
+              <input type="checkbox" checked="{{ history.includeWellness }}" sc-camel-on-change="{{ history.onIncludeWellness }}" style="width:22px;height:22px;flex:none;accent-color:#F0C64A">
+              <span>Autorizo incluir y enviar a Gemini mis datos de bienestar (ciclo, hidratación y estrés). Sin marcar, solo se envían datos de entrenamiento.</span>
+            </label>
+            <button sc-camel-on-click="{{ history.run }}" disabled="{{ history.anLoading }}" style="width:100%;border:none;border-radius:12px;padding:14px;font-family:Anton;font-size:17px;letter-spacing:1px;color:#0b0808;background:linear-gradient(135deg,#F0C64A,#C9962B);cursor:pointer;text-transform:uppercase;box-shadow:0 6px 18px rgba(240,198,74,.22)">{{ history.anLabel }}</button>
+            <sc-if value="{{ history.anError }}">
+              <div style="margin-top:12px;font-family:'DM Sans';font-size:13px;color:#e88;background:rgba(193,18,31,.14);border:1px solid #7d0a12;border-radius:10px;padding:10px 12px;line-height:1.5">{{ history.anError }}</div>
+            </sc-if>
+            <sc-if value="{{ history.hasResult }}">
+              <div style="margin-top:16px;border-top:1px solid #3a2418;padding-top:16px">{{ history.resultNode }}</div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ history.empty }}">
+          <div style="text-align:center;padding:40px 20px;color:#9a8f82;font-family:'DM Sans';line-height:1.6">
+            <div style="font-size:40px;margin-bottom:12px">🗓️</div>
+            <b style="color:#F4ECD8;font-family:Oswald;letter-spacing:1px">AÚN NO HAY SEMANAS PASADAS</b><br>
+            Completa funciones esta semana y aquí quedará tu registro.
+          </div>
+        </sc-if>
+
+        <sc-for list="{{ history.weeks }}" as="w" hint-placeholder-count="3">
+          <div style="{{ w._wrap }}">
+            <div style="background:#17100e;border:1.5px solid #C9962B;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.4)">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px">
+                <div style="min-width:0">
+                  <div style="font-family:Anton;font-size:22px;color:#F4ECD8;letter-spacing:.5px">{{ w.range }}</div>
+                  <div style="font-family:Oswald;font-weight:600;font-size:10px;letter-spacing:2px;color:#9a8f82;margin-top:2px">SEMANA {{ w.weekNum }}</div>
+                  <div style="font-family:Oswald;font-weight:600;font-size:10px;letter-spacing:1px;color:#C9962B;margin-top:4px">{{ w.status }}</div>
+                </div>
+                <sc-if value="{{ w.champ }}">
+                  <span style="flex:none;font-family:Oswald;font-weight:700;font-size:11px;letter-spacing:1px;color:#0b0808;background:linear-gradient(135deg,#F0C64A,#C9962B);border-radius:20px;padding:5px 11px">👑 CAMPEONA</span>
+                </sc-if>
+              </div>
+              <div style="display:flex;gap:24px;margin-bottom:13px">
+                <div>
+                  <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B">FUNCIONES</div>
+                  <div style="font-family:Anton;font-size:26px;color:#F0C64A;line-height:1.1">{{ w.ganadas }}<span style="font-family:Oswald;font-weight:700;font-size:14px;color:#9a8f82">/{{ w.total }}</span></div>
+                </div>
+                <div>
+                  <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B">SERIES MARCADAS</div>
+                  <div style="font-family:Anton;font-size:26px;color:#F4ECD8;line-height:1.1">{{ w.ejercicios }}</div>
+                </div>
+              </div>
+              <div style="position:relative;height:8px;border-radius:5px;background:#120c0b;border:1px solid #3a2418;overflow:hidden">
+                <div style="{{ w.fillStyle }}"></div>
+              </div>
+              <sc-if value="{{ w.hasWell }}">
+                <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:13px">
+                  <sc-for list="{{ w.badges }}" as="b" hint-placeholder-count="2">
+                    <span style="{{ b._style }}">{{ b.text }}</span>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+        <div style="font-family:'DM Sans';font-size:11px;line-height:1.5;color:#9a8f82">* En semanas antiguas, el total usa los días del plan actual como referencia; no existe un plan histórico verificable para cada semana. «Sin registro» no equivale a cero entrenamientos.</div>
+      </div>
+    </sc-if>
+
+    <!-- ===== CAMPANA DE RING ===== -->
+    <sc-if value="{{ bellShow }}">
+      <div style="position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;pointer-events:none;background:radial-gradient(circle at 50% 42%, rgba(11,8,8,.45), transparent 60%)">
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+          <div style="position:absolute;top:8px;width:130px;height:130px;border-radius:50%;border:4px solid #F0C64A;animation:ringWave 1s ease-out both"></div>
+          <div style="position:absolute;top:8px;width:130px;height:130px;border-radius:50%;border:4px solid #C1121F;animation:ringWave 1s ease-out .16s both"></div>
+          <div style="position:absolute;top:8px;width:130px;height:130px;border-radius:50%;border:3px solid #F0C64A;animation:ringWave 1s ease-out .32s both"></div>
+          <div style="font-size:92px;line-height:1;transform-origin:50% 14%;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55));animation:bellPop .35s cubic-bezier(.2,.85,.3,1.2) both, bellRing .42s ease-in-out .28s 3">🔔</div>
+          <div style="margin-top:6px;font-family:Anton;font-size:36px;letter-spacing:4px;color:#F0C64A;text-transform:uppercase;text-shadow:0 3px 0 #7d0a12,0 6px 16px rgba(0,0,0,.6);animation:titleSlam .5s cubic-bezier(.2,.85,.3,1.1) both">¡Ding Ding!</div>
+          <div style="margin-top:4px;font-family:Oswald;font-weight:700;font-size:13px;letter-spacing:3px;color:#F4ECD8;animation:bellPop .4s ease-out .12s both">FUNCIÓN GANADA</div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 600, &quot;height&quot;: 1040 },
+  &quot;entranceFx&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Impacto&quot;, &quot;Rebote&quot;, &quot;Ninguna&quot;], &quot;default&quot;: &quot;Impacto&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Animación&quot;, &quot;label&quot;: &quot;Entrada de tarjetas&quot; },
+  &quot;showSunburst&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Estilo&quot;, &quot;label&quot;: &quot;Rayos de sol (sunburst)&quot; }
+}">
+class Component extends DCLogic {
+  // La clave de Gemini NO va en el código (GitHub la bloquea).
+  // Se lee desde Firestore: colección "config", documento "app", campo "geminiKey".
+  GEMINI_API_KEY = "";
+
+  state = {
+    view: 'list', selected: null,
+    loading: true, error: false,
+    saving: false, saveMsg: '', dirty: false, videoDirty: [], syncState: '', syncMessage: '',
+    rutinas: [], alumna: 'Jessi', detailEx: [],
+    doneIds: [], exDone: [], bellShow: false, prevSnapshots: {},
+    wellness: {}, weekWellness: {}, sessionLogs: {}, historyLoading: false, historyError: false,
+    selectedVolPoint: null, volRangeWeek: '', volExerciseKey: '',
+    anFrom: '', anTo: '', anResult: '', anLoading: false, anError: '', anIncludeWellness: false,
+    geminiKey: '',
+    theme: (() => { try { return localStorage.getItem('jessi-theme') === 'light' ? 'light' : 'dark'; } catch (e) { return 'dark'; } })()
+  };
+
+  async loadPrevSnapshots(dayName) {
+    if (!this._db || !this._fs) return;
+    try {
+      const all = await this._fs.getDocs(this._fs.collection(this._db, 'progreso'));
+      const weeks = all.docs.filter(doc => doc.id < this.weekKey()).sort((a, b) => b.id.localeCompare(a.id));
+      const filtered = {};
+      for (const doc of weeks) {
+        const snaps = (doc.data() || {}).snapshots || {};
+        for (const key in snaps) {
+          if (key.indexOf(dayName + '#') === 0 && !filtered[key.slice(dayName.length + 1)]) filtered[key.slice(dayName.length + 1)] = snaps[key];
+        }
+      }
+      this.setState({ prevSnapshots: filtered });
+    } catch (e) { this.setState({ prevSnapshots: {} }); }
+  }
+
+  cleanWeight(value) {
+    return (value == null ? '' : ('' + value))
+      .replace(/\s*(?:kgs?|kilos?|lbs?|pounds?)\b/ig, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+  }
+
+  weightUnitFromValue(value, fallback) {
+    const low = (value == null ? '' : ('' + value)).toLowerCase();
+    if (/\b(?:kg|kgs|kilos?)\b/.test(low)) return 'KG';
+    if (/\b(?:lb|lbs|pounds?)\b/.test(low)) return 'LB';
+    const saved = ('' + (fallback || '')).toUpperCase();
+    return saved === 'KG' || saved === 'LB' ? saved : '';
+  }
+
+  weightUnitFromExercise(e) {
+    const saved = ('' + ((e && e.unidadPeso) || '')).toUpperCase();
+    if (saved === 'KG' || saved === 'LB') return saved;
+    const series = e && Array.isArray(e.series) && e.series.length ? e.series : this.normSeries(e || {});
+    const values = series.map(se => se.peso).concat(e ? [e.peso] : []);
+    const tagged = values.find(value => /\b(?:kg|kgs|kilos?|lb|lbs|pounds?)\b/i.test('' + (value == null ? '' : value)));
+    return tagged ? this.weightUnitFromValue(tagged, '') : '';
+  }
+
+  formatWeight(value, unit) {
+    const clean = this.cleanWeight(value);
+    if (!clean || clean === '—') return '—';
+    if (!unit) return clean;
+    const label = ('' + unit).toLowerCase();
+    const match = clean.match(/^(-?\d+(?:\.\d+)?)(.*)$/);
+    return match ? (match[1] + ' ' + label + match[2]) : (clean + ' ' + label);
+  }
+
+  playDing() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!this._ac) this._ac = new AC();
+      const ac = this._ac;
+      if (ac.state === 'suspended') ac.resume();
+      const now = ac.currentTime;
+      [0, 0.2, 0.4].forEach((t, idx) => {
+        const s = now + t;
+        const freq = idx === 2 ? 1180 : 940;
+        [1, 2.76].forEach((mult, k) => {
+          const o = ac.createOscillator(), g = ac.createGain();
+          o.type = 'triangle';
+          o.frequency.value = freq * mult;
+          o.connect(g); g.connect(ac.destination);
+          const peak = k === 0 ? 0.3 : 0.12;
+          g.gain.setValueAtTime(0.0001, s);
+          g.gain.exponentialRampToValueAtTime(peak, s + 0.008);
+          g.gain.exponentialRampToValueAtTime(0.0001, s + 0.2);
+          o.start(s); o.stop(s + 0.22);
+        });
+      });
+    } catch (e) {}
+  }
+
+  ringBell() {
+    this.playDing();
+    if (this._bellT) clearTimeout(this._bellT);
+    this.setState({ bellShow: false }, () => {
+      requestAnimationFrame(() => this.setState({ bellShow: true }));
+    });
+    this._bellT = setTimeout(() => this.setState({ bellShow: false }), 1500);
+  }
+
+  weekKey() {
+    const d = new Date();
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = (t.getUTCDay() + 6) % 7;
+    t.setUTCDate(t.getUTCDate() - day + 3);
+    const firstThu = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+    const week = 1 + Math.round(((t - firstThu) / 86400000 - 3 + ((firstThu.getUTCDay() + 6) % 7)) / 7);
+    return t.getUTCFullYear() + '-W' + week;
+  }
+
+  weekRange() {
+    const d = new Date();
+    const day = (d.getDay() + 6) % 7;
+    const mon = new Date(d); mon.setDate(d.getDate() - day);
+    const sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+    const M = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+    return mon.getDate() + ' ' + M[mon.getMonth()] + ' – ' + sun.getDate() + ' ' + M[sun.getMonth()];
+  }
+
+  toggleDone(id, ev) {
+    if (ev && ev.stopPropagation) ev.stopPropagation();
+    const cur = (this.state.doneIds || []).slice();
+    const i = cur.indexOf(id);
+    const adding = i < 0;
+    if (adding) cur.push(id); else cur.splice(i, 1);
+    try { localStorage.setItem('jessi-prog-' + this.weekKey(), JSON.stringify(cur)); } catch (e) {}
+    this.setState({ doneIds: cur });
+    const log = this.captureSession(id, cur, this.state.exDone, adding);
+    this.pushProgress(cur, this.state.exDone, log);
+    if (adding) this.ringBell();
+  }
+
+  captureSession(dayId, doneIds, exDone, manualComplete, newlyCheckedKey) {
+    const now = Date.now();
+    const prev = ((this._sessionLogs || this.state.sessionLogs || {})[dayId]) || {};
+    const prior = new Map((prev.series || []).map(se => [se.key, se]));
+    const checked = new Set(exDone || []);
+    const selected = this.state.rutinas[this.state.selected];
+    if (selected && selected._id === dayId && this.state.view === 'detail') {
+      (this.state.detailEx || []).forEach((e, j) => {
+        (e.series || []).forEach((se, k) => {
+          const key = j + '#' + k;
+          if (checked.has(dayId + '#' + key) && (key === newlyCheckedKey || prior.has(key))) {
+            prior.set(key, {
+              key, ejercicio: e.nombre || '', serie: k + 1,
+              peso: se.peso == null ? '' : '' + se.peso,
+              reps: se.reps == null ? '' : '' + se.reps,
+              unidadPeso: this.weightUnitFromExercise(e),
+              recordedAt: (prior.get(key) || {}).recordedAt || now
+            });
+          } else prior.delete(key);
+        });
+      });
+    } else {
+      for (const key of prior.keys()) if (!checked.has(dayId + '#' + key)) prior.delete(key);
+    }
+    const completed = (doneIds || []).includes(dayId);
+    if (!prev.startedAt && !completed && !newlyCheckedKey && prior.size === 0) return null;
+    const log = {
+      dayId, week: this.weekKey(), dayName: (this.state.rutinas.find(r => r._id === dayId) || {}).nombre || '',
+      startedAt: prev.startedAt || now, updatedAt: now,
+      completedAt: completed ? (prev.completedAt || now) : null,
+      manualComplete: completed ? (!!manualComplete || !!prev.manualComplete) : false,
+      series: [...prior.values()].sort((a, b) => a.key.localeCompare(b.key, undefined, { numeric: true }))
+    };
+    const logs = { ...(this._sessionLogs || this.state.sessionLogs || {}), [dayId]: log };
+    this._sessionLogs = logs;
+    this.setState({ sessionLogs: logs });
+    return log;
+  }
+
+  queueProgress(patch, week) {
+    if (!this._db || !this._fs) {
+      this.setState({ syncState: 'error', syncMessage: 'Sin conexión con Firebase. Los cambios no se han sincronizado.' });
+      return Promise.resolve(false);
+    }
+    if (!this._progressQueue) this._progressQueue = [];
+    const wk = week || this.weekKey();
+    this._progressQueue.push({ week: wk, patch: { week: wk, ...patch } });
+    this.setState({ syncState: 'saving', syncMessage: 'Sincronizando…' });
+    return this.retrySync();
+  }
+
+  async retrySync() {
+    if (this._flushingProgress) return this._syncPromise;
+    if (!this._db || !this._fs) return false;
+    this._flushingProgress = true;
+    this._syncPromise = (async () => {
+      while (this._progressQueue && this._progressQueue.length) {
+        const next = this._progressQueue[0];
+        try {
+          await this._fs.setDoc(this._fs.doc(this._db, 'progreso', next.week), next.patch, { merge: true });
+          this._progressQueue.shift();
+        } catch (e) {
+          console.error('Sincronización de progreso', e);
+          this.setState({ syncState: 'error', syncMessage: 'No se guardó en la nube. Toca Reintentar.' });
+          this._flushingProgress = false;
+          return false;
+        }
+      }
+      this._flushingProgress = false;
+      this.setState({ syncState: 'saved', syncMessage: 'Cambios sincronizados' });
+      return true;
+    })();
+    return this._syncPromise;
+  }
+
+  pushProgress(doneIds, exDone, sessionLog) {
+    const wk = this.weekKey();
+    const patch = {
+      week: wk, doneIds: doneIds || [], exDone: exDone || [],
+      plannedDayIds: (this.state.rutinas || []).map(r => r._id), updatedAt: Date.now()
+    };
+    if (sessionLog) patch['sessionLog_' + sessionLog.dayId] = sessionLog;
+    this.queueProgress(patch, wk);
+  }
+
+  setWellness(dayId, field, value) {
+    const w = { ...(this.state.wellness || {}) };
+    const cur = { ...(w[dayId] || {}) };
+    if (field === 'periodo') cur.periodo = value;
+    else cur[field] = (cur[field] === value ? '' : value);
+    w[dayId] = cur;
+    this.setState({ wellness: w });
+    this.queueProgress({ wellness: w, updatedAt: Date.now() });
+  }
+
+  subscribeWeek(wk) {
+    if (!this._db || !this._fs) return;
+    if (this._unsub) { this._unsub(); this._unsub = null; }
+    const fs = this._fs;
+    this._unsub = fs.onSnapshot(fs.doc(this._db, 'progreso', wk), (snap) => {
+      const d = (snap && snap.exists && snap.exists()) ? snap.data() : null;
+      const doneIds = (d && d.doneIds) || [];
+      const exDone = (d && d.exDone) || [];
+      const wellness = (d && d.wellness) || {};
+      const sessionLogs = {};
+      (this.state.rutinas || []).forEach(r => {
+        const log = d && d['sessionLog_' + r._id];
+        if (log) sessionLogs[r._id] = log;
+      });
+      if (this._progressQueue && this._progressQueue.length) return;
+      try { localStorage.setItem('jessi-prog-' + wk, JSON.stringify(doneIds)); } catch (e) {}
+      try { localStorage.setItem('jessi-ex-' + wk, JSON.stringify(exDone)); } catch (e) {}
+      this._sessionLogs = sessionLogs;
+      this.setState({ doneIds, exDone, wellness, sessionLogs });
+    }, (err) => console.error('onSnapshot', err));
+  }
+
+  playTick() {
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!this._ac) this._ac = new AC();
+      const ac = this._ac; if (ac.state === 'suspended') ac.resume();
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = 'square'; o.frequency.value = 1320;
+      o.connect(g); g.connect(ac.destination);
+      const n = ac.currentTime;
+      g.gain.setValueAtTime(0.0001, n);
+      g.gain.exponentialRampToValueAtTime(0.16, n + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, n + 0.07);
+      o.start(n); o.stop(n + 0.08);
+    } catch (e) {}
+  }
+
+  checkWeek() {
+    const wk = this.weekKey();
+    if (wk === this._week) return;
+    this._week = wk;
+    let doneIds = [], exDone = [];
+    try { const a = localStorage.getItem('jessi-prog-' + wk); if (a) doneIds = JSON.parse(a) || []; } catch (e) {}
+    try { const b = localStorage.getItem('jessi-ex-' + wk); if (b) exDone = JSON.parse(b) || []; } catch (e) {}
+    this._sessionLogs = {};
+    this.setState({ doneIds, exDone, sessionLogs: {}, wellness: {} });
+    this.subscribeWeek(wk);
+  }
+
+  async openHistory() {
+    this.setState({ view: 'history', historyLoading: true, historyError: false });
+    this._progDocs = {};
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    if (this._db && this._fs) {
+      try {
+        const fs = this._fs;
+        const snap = await fs.getDocs(fs.collection(this._db, 'progreso'));
+        const docs = {}, weekWellness = {};
+        snap.forEach(doc => {
+          const d = doc.data() || {};
+          docs[doc.id] = d;
+          weekWellness[doc.id] = d.wellness || {};
+        });
+        this._progDocs = docs;
+        this.setState({ weekWellness });
+      } catch (e) { console.error('history', e); this.setState({ historyError: true, weekWellness: {} }); }
+    }
+    this.setState({ historyLoading: false });
+  }
+
+  getHistory() {
+    const docs = this._progDocs || {};
+    const fallbackTotal = this.state.rutinas.length || 4;
+    const M = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+    const monday = (year, week) => {
+      const simple = new Date(Date.UTC(year, 0, 4));
+      const dow = (simple.getUTCDay() + 6) % 7;
+      const w1 = new Date(simple); w1.setUTCDate(simple.getUTCDate() - dow);
+      const mon = new Date(w1); mon.setUTCDate(w1.getUTCDate() + (week - 1) * 7);
+      return mon;
+    };
+    const local = {};
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (!k) continue;
+        let wk = null, kind = null;
+        if (k.indexOf('jessi-prog-') === 0) { wk = k.slice(11); kind = 'prog'; }
+        else if (k.indexOf('jessi-ex-') === 0) { wk = k.slice(9); kind = 'ex'; }
+        if (!wk) continue;
+        if (!local[wk]) local[wk] = { ganadas: 0, ejercicios: 0 };
+        try {
+          const arr = JSON.parse(localStorage.getItem(k)) || [];
+          if (kind === 'prog') local[wk].ganadas = arr.length;
+          else local[wk].ejercicios = arr.length;
+        } catch (e) {}
+      }
+    } catch (e) {}
+    const keyPattern = /^\d{4}-W(?:[1-9]|[1-4]\d|5[0-3])$/;
+    const order = wk => { const m = wk.match(/^(\d+)-W(\d+)$/); return +m[1] * 100 + +m[2]; };
+    const keys = [...new Set([...Object.keys(docs), ...Object.keys(local)])].filter(wk => keyPattern.test(wk) && order(wk) < order(this.weekKey())).sort((a, b) => order(a) - order(b));
+    if (!keys.length) return [];
+    const keyForMonday = mon => {
+      const thu = new Date(mon); thu.setUTCDate(mon.getUTCDate() + 3);
+      const year = thu.getUTCFullYear();
+      const first = monday(year, 1);
+      return year + '-W' + (1 + Math.round((mon - first) / 604800000));
+    };
+    const firstParts = keys[0].match(/^(\d+)-W(\d+)$/);
+    const first = monday(+firstParts[1], +firstParts[2]);
+    const curParts = this.weekKey().match(/^(\d+)-W(\d+)$/);
+    const end = monday(+curParts[1], +curParts[2]);
+    const weekKeys = [];
+    for (let mon = new Date(first); mon < end; mon.setUTCDate(mon.getUTCDate() + 7)) weekKeys.push(keyForMonday(mon));
+    const ww = this.state.weekWellness || {};
+    return weekKeys.map(wk => {
+      const m = wk.match(/^(\d+)-W(\d+)$/);
+      const year = m ? +m[1] : 0, week = m ? +m[2] : 0;
+      const mon = monday(year, week);
+      const sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+      const range = mon.getUTCDate() + ' ' + M[mon.getUTCMonth()] + ' – ' + sun.getUTCDate() + ' ' + M[sun.getUTCMonth()];
+      const doc = docs[wk] || null;
+      const cached = !doc ? local[wk] : null;
+      const missing = !doc && !cached;
+      const g = doc ? (doc.doneIds || []).length : (cached ? cached.ganadas : 0);
+      const exercises = doc ? (doc.exDone || []).length : (cached ? cached.ejercicios : 0);
+      const planned = doc && Array.isArray(doc.plannedDayIds) && doc.plannedDayIds.length ? doc.plannedDayIds.length : null;
+      const total = planned || fallbackTotal;
+      const sum = this.wellnessSummary(ww[wk]);
+      return {
+        wk, range, weekNum: week, sortKey: year * 100 + week,
+        ganadas: missing ? '—' : g, ejercicios: missing ? '—' : exercises, total: missing ? '—' : total,
+        estimatedTotal: !missing && !planned, missing,
+        status: missing ? 'SIN REGISTRO' : (cached ? 'SOLO EN ESTE DISPOSITIVO' : (planned ? 'REGISTRADA' : 'TOTAL ESTIMADO*')),
+        champ: !!planned && g >= planned,
+        periodo: sum.periodo, badges: sum.badges, hasWell: sum.badges.length > 0,
+        fillStyle: {
+          height: '100%', width: (!missing && total ? Math.round(Math.min(g, total) / total * 100) : 0) + '%',
+          background: 'linear-gradient(90deg,#C1121F,#F0C64A)', borderRadius: '5px'
+        }
+      };
+    }).sort((a, b) => b.sortKey - a.sortKey);
+  }
+
+  parseComparableWeight(peso, unidadPeso) {
+    const value = ('' + (peso == null ? '' : peso)).trim();
+    const m = value.match(/^(\d+(?:[.,]\d+)?)\s*(kg|kgs|lb|lbs)?$/i);
+    if (!m) return null;
+    const unit = (m[2] || unidadPeso || '').toUpperCase().replace(/S$/, '');
+    if (unit !== 'KG' && unit !== 'LB') return null;
+    const n = Number(m[1].replace(',', '.'));
+    if (!Number.isFinite(n) || n <= 0) return null;
+    return { kg: unit === 'LB' ? n * 0.45359237 : n, original: n + ' ' + unit };
+  }
+
+  buildVolumeChart() {
+    const docs = this._progDocs || {};
+    const M = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+    const monday = (year, week) => {
+      const simple = new Date(Date.UTC(year, 0, 4));
+      const dow = (simple.getUTCDay() + 6) % 7;
+      const w1 = new Date(simple); w1.setUTCDate(simple.getUTCDate() - dow);
+      const mon = new Date(w1); mon.setUTCDate(w1.getUTCDate() + (week - 1) * 7);
+      return mon;
+    };
+    const allWkKeys = Object.keys(docs).map(wk => {
+      const m = wk.match(/^(\d+)-W(\d+)$/);
+      return { wk, year: m ? +m[1] : 0, week: m ? +m[2] : 0, sk: m ? (+m[1] * 100 + +m[2]) : 0 };
+    }).filter(w => w.sk > 0).sort((a, b) => a.sk - b.sk);
+    const rangeWeek = this.state.volRangeWeek;
+    const byWeek = {};
+    const optionCounts = {};
+    let excluded = 0;
+    allWkKeys.forEach(w => {
+      const d = docs[w.wk] || {};
+      const values = {};
+      Object.entries(d.snapshots || {}).forEach(([key, snap]) => {
+        const first = (snap.series || [])[0];
+        const parsed = first && this.parseComparableWeight(first.peso, snap.unidadPeso);
+        if (parsed) values[key] = { ...parsed, source: 'carga guardada', serie: 1 };
+        else excluded++;
+      });
+      Object.keys(d).filter(k => k.indexOf('sessionLog_') === 0).forEach(k => {
+        const log = d[k] || {};
+        const best = {};
+        (log.series || []).forEach(se => {
+          const key = (log.dayName || '') + '#' + (se.ejercicio || '');
+          if (!best[key] || se.serie < best[key].serie) best[key] = se;
+        });
+        Object.entries(best).forEach(([key, se]) => {
+          const parsed = this.parseComparableWeight(se.peso, se.unidadPeso);
+          if (parsed) values[key] = { ...parsed, source: 'serie realizada', serie: se.serie };
+          else excluded++;
+        });
+      });
+      byWeek[w.wk] = values;
+      Object.keys(values).forEach(key => { optionCounts[key] = (optionCounts[key] || 0) + 1; });
+    });
+    const exerciseOptions = Object.keys(optionCounts).sort((a, b) => optionCounts[b] - optionCounts[a] || a.localeCompare(b)).map(key => ({ value: key, label: key.replace('#', ' · ') }));
+    const exerciseKey = optionCounts[this.state.volExerciseKey] ? this.state.volExerciseKey : ((exerciseOptions[0] || {}).value || '');
+    const wkKeys = rangeWeek ? allWkKeys.filter(w => w.wk === rangeWeek) : allWkKeys;
+    const points = wkKeys.filter(w => byWeek[w.wk] && byWeek[w.wk][exerciseKey]).map(w => ({
+      date: monday(w.year, w.week), week: w.wk,
+      volume: byWeek[w.wk][exerciseKey].kg, ...byWeek[w.wk][exerciseKey]
+    }));
+
+    const weekOptions = allWkKeys.map(w => {
+      const mon = monday(w.year, w.week);
+      const sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+      return { value: w.wk, label: mon.getUTCDate() + ' ' + M[mon.getUTCMonth()] + '–' + sun.getUTCDate() + ' ' + M[sun.getUTCMonth()] };
+    });
+
+    const chartNote = 'Serie registrada de menor número por día y ejercicio. LB se convierte a KG; se excluyen ' + excluded + ' cargas sin unidad o formato comparable. «Carga guardada» no confirma ejecución.';
+    if (!points.length) return { hasVolume: false, weekOptions, rangeWeek, exerciseOptions, exerciseKey, chartNote };
+
+    let max = 0;
+    points.forEach(p => { if (p.volume > max) max = p.volume; });
+    if (max <= 0) max = 1;
+
+    const chartW = Math.max(280, points.length * 46);
+    const chartH = 150;
+    const padL = 10, padR = 10, padT = 14, padB = 8;
+    const xFor = i => points.length > 1 ? padL + (i * (chartW - padL - padR) / (points.length - 1)) : (chartW / 2);
+    const yFor = v => padT + (1 - (v / max)) * (chartH - padT - padB);
+
+    const pts = points.map((p, i) => ({ x: xFor(i), y: yFor(p.volume), v: p.volume, week: p.week, source: p.source, original: p.original, serie: p.serie }));
+
+    // Segmentos de linea dibujados como divs rotados (sin SVG).
+    const segments = [];
+    for (let i = 0; i < pts.length - 1; i++) {
+      if (points[i + 1].date - points[i].date > 604800000) continue;
+      const p1 = pts[i], p2 = pts[i + 1];
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const len = Math.sqrt(dx * dx + dy * dy);
+      const ang = Math.atan2(dy, dx) * (180 / Math.PI);
+      segments.push({
+        style: {
+          position: 'absolute', left: p1.x + 'px', top: p1.y + 'px',
+          width: len + 'px', height: '3px', background: '#F0C64A',
+          transformOrigin: '0 50%', transform: 'rotate(' + ang + 'deg)',
+          borderRadius: '2px', boxShadow: '0 0 6px rgba(240,198,74,.5)'
+        }
+      });
+    }
+
+    // Area rellena bajo la linea via clip-path polygon.
+    const baseY = chartH - padB;
+    const polyPts = ['0px ' + baseY + 'px'].concat(pts.map(p => p.x.toFixed(1) + 'px ' + p.y.toFixed(1) + 'px')).concat([chartW + 'px ' + baseY + 'px']);
+    const areaStyle = {
+      position: 'absolute', inset: '0', clipPath: 'polygon(' + polyPts.join(',') + ')',
+      background: 'linear-gradient(180deg, rgba(240,198,74,.42), rgba(240,198,74,0) 85%)'
+    };
+
+    const selIdx = this.state.selectedVolPoint;
+    const dots = pts.map((p, i) => {
+      const sel = selIdx === i;
+      return {
+        style: {
+          position: 'absolute', left: (p.x - 22) + 'px', top: (p.y - 22) + 'px',
+          width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer',
+          background: 'transparent', border: '0', padding: '0'
+        },
+        dotStyle: { display: 'block', width: '10px', height: '10px', margin: 'auto', borderRadius: '50%', background: sel ? '#F0C64A' : '#C1121F', border: '1.5px solid #17100e', boxShadow: sel ? '0 0 0 3px rgba(240,198,74,.55)' : '0 0 0 1px rgba(240,198,74,.5)' },
+        onClick: () => this.setState({ selectedVolPoint: sel ? null : i }),
+        hasLabel: sel,
+        ariaLabel: p.week + ': ' + p.original + ', serie ' + p.serie + ', ' + p.source,
+        labelText: p.original + ' · ' + p.source,
+        labelStyle: {
+          position: 'absolute', left: p.x + 'px', top: (p.y - 26) + 'px', transform: 'translateX(-50%)',
+          background: '#0b0808', border: '1px solid #F0C64A', borderRadius: '8px', padding: '4px 9px',
+          fontFamily: 'Oswald', fontWeight: '700', fontSize: '11px', color: '#F4ECD8', whiteSpace: 'nowrap', zIndex: '20'
+        }
+      };
+    });
+
+    const containerStyle = { position: 'relative', width: chartW + 'px', height: chartH + 'px' };
+    const xAxisRowStyle = { display: 'flex', justifyContent: 'space-between', marginTop: '4px', minWidth: chartW + 'px' };
+    const yMaxLabel = Math.round(max * 10) / 10 + ' kg';
+    const yMinLabel = '0 kg';
+    const xFromLabel = points[0].week;
+    const xToLabel = points[points.length - 1].week;
+    return {
+      hasVolume: true, chartW, chartH, containerStyle, areaStyle, segments, dots,
+      xAxisRowStyle, yMaxLabel, yMinLabel, xFromLabel, xToLabel, weekOptions, rangeWeek,
+      exerciseOptions, exerciseKey, chartNote,
+      fromLabel: points[0].week, toLabel: points[points.length - 1].week
+    };
+  }
+
+  setVolRangeAll() { this.setState({ volRangeWeek: '', selectedVolPoint: null }); }
+  setVolRangeWeek(wk) { this.setState({ volRangeWeek: wk, selectedVolPoint: null }); }
+  setVolExercise(key) { this.setState({ volExerciseKey: key, selectedVolPoint: null }); }
+
+  wellnessSummary(w) {
+    w = w || {};
+    const days = Object.keys(w);
+    let periodo = false;
+    const hid = [], est = [];
+    days.forEach(k => {
+      const d = w[k] || {};
+      if (d.periodo) periodo = true;
+      if (d.hidratacion) hid.push(d.hidratacion);
+      if (d.estres) est.push(d.estres);
+    });
+    const worst = arr => {
+      if (arr.indexOf('mal') >= 0) return 'mal';
+      if (arr.indexOf('regular') >= 0) return 'regular';
+      if (arr.indexOf('bien') >= 0) return 'bien';
+      return '';
+    };
+    const col = v => v === 'bien' ? '#1f8a4c' : (v === 'regular' ? '#C9962B' : '#C1121F');
+    const mk = (text, fg, bd, bg) => ({
+      text,
+      _style: {
+        fontFamily: 'Oswald', fontWeight: '700', fontSize: '11px', letterSpacing: '.5px',
+        color: fg, background: bg, border: '1px solid ' + bd, borderRadius: '20px', padding: '4px 11px'
+      }
+    });
+    const badges = [];
+    if (periodo) badges.push(mk('🩸 Periodo', '#f0a0a8', '#C1121F', 'rgba(193,18,31,.18)'));
+    const h = worst(hid), e = worst(est);
+    if (h) badges.push(mk('💧 Hidratación: ' + h, col(h), col(h), 'rgba(255,255,255,.04)'));
+    if (e) badges.push(mk('🧠 Estrés: ' + e, col(e), col(e), 'rgba(255,255,255,.04)'));
+    return { periodo, badges };
+  }
+
+  inlineNodes(text) {
+    const parts = []; const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+    let last = 0, m, k = 0;
+    while ((m = re.exec(text))) {
+      if (m.index > last) parts.push(text.slice(last, m.index));
+      if (m[1]) parts.push(React.createElement('strong', { key: k++, style: { color: '#F4ECD8' } }, m[1]));
+      else parts.push(React.createElement('em', { key: k++ }, m[2]));
+      last = re.lastIndex;
+    }
+    if (last < text.length) parts.push(text.slice(last));
+    return parts;
+  }
+
+  renderMarkdown(text) {
+    const lines = ('' + (text || '')).split('\n');
+    const out = []; let key = 0; let bullets = null;
+    const flush = () => {
+      if (bullets) { out.push(React.createElement('ul', { key: key++, style: { margin: '0 0 12px', paddingLeft: '20px' } }, bullets)); bullets = null; }
+    };
+    lines.forEach(raw => {
+      const line = raw.trim();
+      if (!line) { flush(); return; }
+      if (/^-{3,}$/.test(line) || /^\*{3,}$/.test(line)) { flush(); out.push(React.createElement('div', { key: key++, style: { height: '1px', background: '#3a2418', margin: '15px 0' } })); return; }
+      const hm = line.match(/^(#{1,6})\s+(.*)$/);
+      if (hm) { flush(); out.push(React.createElement('div', { key: key++, style: { fontFamily: 'Anton', fontSize: '16px', color: '#F0C64A', letterSpacing: '.5px', textTransform: 'uppercase', margin: '10px 0 9px' } }, this.inlineNodes(hm[2]))); return; }
+      const bm = line.match(/^[\*\-]\s+(.*)$/);
+      if (bm) { if (!bullets) bullets = []; bullets.push(React.createElement('li', { key: key++, style: { fontFamily: "'DM Sans'", fontSize: '14px', color: '#E8DFCB', lineHeight: '1.6', marginBottom: '6px' } }, this.inlineNodes(bm[1]))); return; }
+      flush();
+      out.push(React.createElement('p', { key: key++, style: { fontFamily: "'DM Sans'", fontSize: '14px', color: '#E8DFCB', lineHeight: '1.65', margin: '0 0 12px' } }, this.inlineNodes(line)));
+    });
+    flush();
+    return React.createElement('div', null, out);
+  }
+
+  setGeminiKey(v) {
+    try { localStorage.setItem('jessi-gemini-key', v); } catch (e) {}
+    this.setState({ geminiKey: v });
+  }
+
+  weekKeyForDate(d) {
+    const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    const day = (t.getUTCDay() + 6) % 7;
+    t.setUTCDate(t.getUTCDate() - day + 3);
+    const firstThu = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+    const week = 1 + Math.round(((t - firstThu) / 86400000 - 3 + ((firstThu.getUTCDay() + 6) % 7)) / 7);
+    return t.getUTCFullYear() + '-W' + week;
+  }
+
+  weeksInRange(fromStr, toStr) {
+    const docs = this._progDocs || {};
+    if (!fromStr || !toStr) return Object.keys(docs);
+    const from = new Date(fromStr + 'T00:00:00');
+    const to = new Date(toStr + 'T23:59:59');
+    const keep = {};
+    const c = new Date(from);
+    while (c <= to) { keep[this.weekKeyForDate(c)] = true; c.setDate(c.getDate() + 7); }
+    keep[this.weekKeyForDate(to)] = true;
+    return Object.keys(docs).filter(wk => keep[wk]);
+  }
+
+  buildAnalysisText(fromStr, toStr, includeWellness) {
+    const docs = this._progDocs || {};
+    const rutinas = this.state.rutinas || [];
+    const idName = {}; rutinas.forEach((r, i) => { idName[r._id] = r.nombre || ('Día ' + (i + 1)); });
+    const total = rutinas.length || 4;
+    const M = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+    const monday = (year, week) => {
+      const simple = new Date(Date.UTC(year, 0, 4));
+      const dow = (simple.getUTCDay() + 6) % 7;
+      const w1 = new Date(simple); w1.setUTCDate(simple.getUTCDate() - dow);
+      const mon = new Date(w1); mon.setUTCDate(w1.getUTCDate() + (week - 1) * 7);
+      return mon;
+    };
+    const wks = this.weeksInRange(fromStr, toStr).map(wk => {
+      const m = wk.match(/^(\d+)-W(\d+)$/);
+      return { wk, sk: m ? (+m[1] * 100 + +m[2]) : 0, year: m ? +m[1] : 0, week: m ? +m[2] : 0 };
+    }).sort((a, b) => a.sk - b.sk);
+    let out = '';
+    wks.forEach(({ wk, year, week }) => {
+      const d = docs[wk] || {};
+      const mon = monday(year, week);
+      const sun = new Date(mon); sun.setUTCDate(mon.getUTCDate() + 6);
+      const range = mon.getUTCDate() + ' ' + M[mon.getUTCMonth()] + ' - ' + sun.getUTCDate() + ' ' + M[sun.getUTCMonth()] + ' ' + year;
+      out += '\n== Semana ' + week + ' (' + range + ') ==\n';
+      const planned = Array.isArray(d.plannedDayIds) && d.plannedDayIds.length ? d.plannedDayIds.length : null;
+      out += 'Funciones marcadas: ' + ((d.doneIds || []).length) + ' de ' + (planned || total) + (planned ? '' : ' (total estimado con el plan actual)') + '\n';
+      out += 'Marcas de series: ' + ((d.exDone || []).length) + '\n';
+      if (includeWellness) {
+        const w = d.wellness || {};
+        Object.keys(w).forEach(id => {
+          const dd = w[id] || {};
+          const bits = [];
+          if (dd.periodo) bits.push('periodo menstrual: SÍ');
+          if (dd.hidratacion) bits.push('hidratación: ' + dd.hidratacion);
+          if (dd.estres) bits.push('estrés: ' + dd.estres);
+          if (bits.length) out += '  ' + (idName[id] || id) + ' → ' + bits.join(', ') + '\n';
+        });
+      }
+      const snaps = d.snapshots || {};
+      const sk = Object.keys(snaps);
+      if (sk.length) {
+        out += 'Cargas guardadas (no confirman ejecución):\n';
+        sk.forEach(key => {
+          const ej = key.split('#')[1] || key;
+          const series = (snaps[key].series || []).map(s => (s.peso || '?') + 'x' + (s.reps || '?')).join(', ');
+          out += '  ' + ej + ': ' + series + '\n';
+        });
+      }
+      Object.keys(d).filter(key => key.indexOf('sessionLog_') === 0).forEach(key => {
+        const log = d[key] || {};
+        if (!Array.isArray(log.series) || !log.series.length) return;
+        out += 'Series realizadas de ' + (log.dayName || 'día sin nombre') + ':\n';
+        log.series.forEach(se => { out += '  ' + (se.ejercicio || 'Ejercicio') + ', serie ' + se.serie + ': ' + (se.peso || '?') + ' ' + (se.unidadPeso || 'unidad desconocida') + ' x ' + (se.reps || '?') + '\n'; });
+      });
+    });
+    return out.trim() || 'No hay datos registrados en este rango.';
+  }
+
+  async runAnalysis() {
+    const key = (this.GEMINI_API_KEY || this.state.geminiKey || '').trim();
+    if (!key) { this.setState({ anError: 'Falta la clave de Gemini. Agrégala en Firestore: colección "config", documento "app", campo "geminiKey".' }); return; }
+    const data = this.buildAnalysisText(this.state.anFrom, this.state.anTo, this.state.anIncludeWellness);
+    const prompt = 'Analiza en español los registros de entrenamiento de Jessi. Resume la constancia, las tendencias verificables y los huecos de datos. Distingue series realizadas de cargas guardadas que no prueban ejecución. No infieras causas fisiológicas, médicas ni relaciones causales; si mencionas bienestar, trátalo solo como contexto descriptivo y señala cuando haya pocos registros. No propongas modificar la rutina. Usa secciones breves y cifras comprobables.\n\nDATOS:\n' + data;
+    this.setState({ anLoading: true, anError: '', anResult: '' });
+    try {
+      const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + encodeURIComponent(key), {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+      });
+      const j = await res.json();
+      if (j.error) throw new Error(j.error.message || 'Error de la API');
+      const cand = (j.candidates || [])[0] || {};
+      const parts = ((cand.content || {}).parts) || [];
+      const text = parts.map(p => p.text || '').join('').trim();
+      if (!text) throw new Error('No se recibió respuesta. Verifica tu clave.');
+      this.setState({ anResult: text, anLoading: false });
+    } catch (e) {
+      this.setState({ anError: (e && e.message) ? e.message : 'No se pudo generar el análisis.', anLoading: false });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._unsub) { this._unsub(); this._unsub = null; }
+    if (this._weekTimer) clearInterval(this._weekTimer);
+    if (this._onVis) {
+      document.removeEventListener('visibilitychange', this._onVis);
+      window.removeEventListener('focus', this._onVis);
+    }
+  }
+
+  toggleTheme() {
+    const theme = this.state.theme === 'light' ? 'dark' : 'light';
+    try { localStorage.setItem('jessi-theme', theme); } catch (e) {}
+    document.documentElement.dataset.theme = theme;
+    this.setState({ theme });
+  }
+
+  async componentDidMount() {
+    this._week = this.weekKey();
+    this._weekTimer = setInterval(() => this.checkWeek(), 30000);
+    this._onVis = () => this.checkWeek();
+    document.addEventListener('visibilitychange', this._onVis);
+    window.addEventListener('focus', this._onVis);
+    try {
+      const appMod = await import("https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js");
+      const fs = await import("https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js");
+      const firebaseConfig = {
+        apiKey: "AIzaSyBU7g0qQFv3La_evrvASYgYFQI3t9wimSw",
+        authDomain: "asesoriasjessi.firebaseapp.com",
+        projectId: "asesoriasjessi",
+        storageBucket: "asesoriasjessi.firebasestorage.app",
+        messagingSenderId: "363108342077",
+        appId: "1:363108342077:web:2d2bce050eccd3fd814d54"
+      };
+      this._fs = fs;
+      this._db = fs.getFirestore(appMod.initializeApp(firebaseConfig));
+      const snap = await fs.getDocs(fs.query(fs.collection(this._db, "rutinas"), fs.orderBy("orden")));
+      const docs = snap.docs.map(d => ({ _id: d.id, ...d.data() })).filter(r => !r.archivada);
+      const alumna = docs.length ? (docs[0].alumna || "Jessi") : "Jessi";
+      const rutinas = docs.map(r => ({ ...r, ejercicios: (r.ejercicios || []) }));
+      let doneIds = [], exDone = [];
+      try { const raw = localStorage.getItem('jessi-prog-' + this.weekKey()); if (raw) doneIds = JSON.parse(raw) || []; } catch (e) {}
+      try { const rex = localStorage.getItem('jessi-ex-' + this.weekKey()); if (rex) exDone = JSON.parse(rex) || []; } catch (e) {}
+      let geminiKey = '';
+      try { geminiKey = localStorage.getItem('jessi-gemini-key') || ''; } catch (e) {}
+      this.setState({ rutinas, alumna, loading: false, doneIds, exDone, geminiKey });
+      this.subscribeWeek(this.weekKey());
+      try {
+        const cfg = await fs.getDoc(fs.doc(this._db, 'config', 'app'));
+        const k = (cfg.exists() ? cfg.data() : {}).geminiKey;
+        if (k) this.setState({ geminiKey: k });
+      } catch (e) { console.error('config', e); }
+    } catch (e) {
+      console.error(e);
+      this.setState({ loading: false, error: true });
+    }
+  }
+
+  normSeries(e) {
+    if (Array.isArray(e.series) && e.series.length) {
+      return e.series.map(s => ({ peso: s.peso != null ? ('' + s.peso) : '', reps: s.reps != null ? ('' + s.reps) : '' }));
+    }
+    let n = parseInt(e.sets, 10);
+    if (isNaN(n) || n < 1) n = 3;
+    n = Math.min(n, 20);
+    const out = [];
+    for (let k = 0; k < n; k++) out.push({ peso: e.peso != null ? ('' + e.peso) : '', reps: e.reps != null ? ('' + e.reps) : '' });
+    return out;
+  }
+
+  open(i) {
+    const r = this.state.rutinas[i];
+    const ej = (r && r.ejercicios) || [];
+    const deloadSeries = (r && r.deloadActive) ? (r.deloadSeries || []) : null;
+    const detailEx = JSON.parse(JSON.stringify(ej)).map((e, j) => {
+      const unidadPeso = this.weightUnitFromExercise(e);
+      const series = this.normSeries(e).map(s => ({ ...s, peso: this.cleanWeight(s.peso) }));
+      if (deloadSeries) {
+        const dEx = deloadSeries[j];
+        const dSeries = (dEx && dEx.series) || [];
+        return { ...e, unidadPeso, solicitarVideo: !!e.solicitarVideo, series: series.map((s, k) => ({ ...s, peso: this.cleanWeight(dSeries[k] ? dSeries[k].peso : s.peso) })) };
+      }
+      return { ...e, unidadPeso, solicitarVideo: !!e.solicitarVideo, series };
+    });
+    this.setState({ view: 'detail', selected: i, saveMsg: '', dirty: false, videoDirty: [], detailEx, prevSnapshots: {} });
+    if (r) this.loadPrevSnapshots(r.nombre);
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }
+
+  updSerie(exIdx, sIdx, key, val) {
+    const ex = this.state.detailEx.slice();
+    const e = { ...ex[exIdx] };
+    const series = (e.series || []).slice();
+    series[sIdx] = { ...series[sIdx], [key]: val };
+    e.series = series;
+    ex[exIdx] = e;
+    this.setState({ detailEx: ex, dirty: true });
+  }
+
+  addSerie(exIdx) {
+    const ex = this.state.detailEx.slice();
+    const e = { ...ex[exIdx] };
+    const series = (e.series || []).slice();
+    const last = series[series.length - 1] || { peso: '', reps: '' };
+    series.push({ peso: last.peso || '', reps: '' });
+    e.series = series;
+    ex[exIdx] = e;
+    this.setState({ detailEx: ex, dirty: true });
+    const dayId = (this.state.rutinas[this.state.selected] || {})._id;
+    if (dayId && (this.state.doneIds || []).includes(dayId) && !((this._sessionLogs || {})[dayId] || {}).manualComplete) {
+      const doneIds = this.state.doneIds.filter(id => id !== dayId);
+      this.setState({ doneIds });
+      this.pushProgress(doneIds, this.state.exDone, this.captureSession(dayId, doneIds, this.state.exDone, false));
+    }
+  }
+
+  removeSerie(exIdx, sIdx) {
+    const ex = this.state.detailEx.slice();
+    const e = { ...ex[exIdx] };
+    const series = (e.series || []).slice();
+    if (series.length <= 1) return;
+    series.splice(sIdx, 1);
+    e.series = series;
+    ex[exIdx] = e;
+    const dayId = (this.state.rutinas[this.state.selected] || {})._id;
+    const prefix = dayId + '#' + exIdx + '#';
+    const exDone = (this.state.exDone || []).filter(key => key.indexOf(prefix) !== 0);
+    const doneIds = dayId && !((this._sessionLogs || {})[dayId] || {}).manualComplete
+      ? (this.state.doneIds || []).filter(id => id !== dayId) : (this.state.doneIds || []);
+    this.setState({ detailEx: ex, exDone, doneIds, dirty: true, saveMsg: 'Se quitaron las marcas de este ejercicio; guarda los cambios.' });
+    try { localStorage.setItem('jessi-ex-' + this.weekKey(), JSON.stringify(exDone)); } catch (e) {}
+    try { localStorage.setItem('jessi-prog-' + this.weekKey(), JSON.stringify(doneIds)); } catch (e) {}
+    if (dayId) this.pushProgress(doneIds, exDone, this.captureSession(dayId, doneIds, exDone, false));
+  }
+
+  toggleSerie(dayId, exIdx, sIdx) {
+    const cur = (this.state.exDone || []).slice();
+    const key = dayId + '#' + exIdx + '#' + sIdx;
+    const idx = cur.indexOf(key);
+    const adding = idx < 0;
+    if (adding) cur.push(key); else cur.splice(idx, 1);
+    try { localStorage.setItem('jessi-ex-' + this.weekKey(), JSON.stringify(cur)); } catch (e) {}
+    this.setState({ exDone: cur });
+    let doneAfter = this.state.doneIds || [];
+    const totalSeries = (this.state.detailEx || []).reduce((a, e) => a + ((e.series || []).length), 0);
+    const doneSeries = cur.filter(k => k.indexOf(dayId + '#') === 0).length;
+    if (adding) {
+      this.playTick();
+      if (totalSeries > 0 && doneSeries >= totalSeries && (this.state.doneIds || []).indexOf(dayId) < 0) {
+        const dd = (this.state.doneIds || []).slice(); dd.push(dayId);
+        try { localStorage.setItem('jessi-prog-' + this.weekKey(), JSON.stringify(dd)); } catch (e) {}
+        this.setState({ doneIds: dd });
+        doneAfter = dd;
+        this.ringBell();
+      }
+    } else if (doneSeries < totalSeries && !(this._sessionLogs || {})[dayId]?.manualComplete && doneAfter.indexOf(dayId) >= 0) {
+      doneAfter = doneAfter.filter(id => id !== dayId);
+      try { localStorage.setItem('jessi-prog-' + this.weekKey(), JSON.stringify(doneAfter)); } catch (e) {}
+      this.setState({ doneIds: doneAfter });
+    }
+    const log = this.captureSession(dayId, doneAfter, cur, false, adding ? exIdx + '#' + sIdx : null);
+    this.pushProgress(doneAfter, cur, log);
+  }
+
+  back() {
+    if (this.state.dirty && !window.confirm('Hay cambios sin guardar. ¿Salir de la rutina?')) return;
+    this.setState({ view: 'list', saveMsg: '', dirty: false, videoDirty: [] });
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  }
+
+  toggleVideo(j) {
+    const ex = this.state.detailEx.slice();
+    const requested = !ex[j].solicitarVideo;
+    ex[j] = {
+      ...ex[j], solicitarVideo: requested,
+      videoEstado: requested ? 'pendiente' : 'cancelada',
+      videoSolicitadoAt: requested ? Date.now() : (ex[j].videoSolicitadoAt || null)
+    };
+    const videoDirty = [...new Set([...(this.state.videoDirty || []), j])];
+    this.setState({ detailEx: ex, dirty: true, videoDirty });
+  }
+
+  updField(j, k, v) {
+    const ex = this.state.detailEx.slice();
+    ex[j] = { ...ex[j], [k]: v };
+    this.setState({ detailEx: ex, dirty: true });
+  }
+
+  async updateRoutineIfUnchanged(r, ejercicios) {
+    const stable = value => {
+      if (Array.isArray(value)) return value.map(stable);
+      if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])]));
+      return value;
+    };
+    const before = JSON.stringify(stable(r.ejercicios || []));
+    const ref = this._fs.doc(this._db, 'rutinas', r._id);
+    await this._fs.runTransaction(this._db, async tx => {
+      const current = await tx.get(ref);
+      if (!current.exists() || JSON.stringify(stable(current.data().ejercicios || [])) !== before) {
+        throw new Error('RUTINA_CAMBIADA_EN_OTRO_DISPOSITIVO');
+      }
+      tx.update(ref, { ejercicios });
+    });
+  }
+
+  async save() {
+    const i = this.state.selected;
+    const r = this.state.rutinas[i];
+    if (!r) return;
+    const ejercicios = this.state.detailEx.map(e => {
+      const series = (e.series || []).map(s => ({ peso: s.peso || '', reps: s.reps || '' }));
+      const o = { ...e, series, sets: series.length };
+      if (series[0]) { o.peso = series[0].peso; o.reps = series[0].reps; }
+      return o;
+    });
+    this.setState({ saving: true, saveMsg: 'Guardando…' });
+    try {
+      const rut = this.state.rutinas.slice();
+      if (r.deloadActive) {
+        // Semana de descarga: conserva el peso/reps/sets base y guarda solo metadatos del ejercicio.
+        const metadataEjercicios = (r.ejercicios || []).map((base, j) => {
+          const editado = this.state.detailEx[j] || {};
+          return {
+            ...base, unidadPeso: editado.unidadPeso || this.weightUnitFromExercise(base),
+            solicitarVideo: !!editado.solicitarVideo,
+            videoEstado: editado.videoEstado || '', videoSolicitadoAt: editado.videoSolicitadoAt || null
+          };
+        });
+        await this.updateRoutineIfUnchanged(r, metadataEjercicios);
+        rut[i] = { ...rut[i], ejercicios: metadataEjercicios };
+        this.setState({ rutinas: rut });
+      } else {
+        await this.updateRoutineIfUnchanged(r, ejercicios);
+        rut[i] = { ...rut[i], ejercicios };
+        this.setState({ rutinas: rut });
+      }
+      const snapshots = {};
+      ejercicios.forEach(e => {
+        if (e.nombre) snapshots[r.nombre + '#' + e.nombre] = { unidadPeso: e.unidadPeso || '', series: (e.series || []).map(s => ({ peso: s.peso || '', reps: s.reps || '' })) };
+      });
+      const log = this.captureSession(r._id, this.state.doneIds, this.state.exDone, false);
+      const patch = { snapshots, updatedAt: Date.now() };
+      if (log) patch['sessionLog_' + r._id] = log;
+      const synced = await this.queueProgress(patch);
+      if (!synced) throw new Error('Historial sin sincronizar');
+      this.setState({ saving: false, dirty: false, videoDirty: [], saveMsg: '¡GUARDADO Y SINCRONIZADO! 🔔' });
+    } catch (e) {
+      console.error(e);
+      const conflict = (e && e.message) === 'RUTINA_CAMBIADA_EN_OTRO_DISPOSITIVO';
+      this.setState({ saving: false, saveMsg: conflict ? 'La rutina cambió en otro dispositivo. Recarga la página antes de guardar.' : 'No se guardó todo. Revisa tu conexión y vuelve a intentar.' });
+    }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const str = v => (v == null ? '' : ('' + v));
+    const pad = n => ('0' + n).slice(-2);
+
+    const fx = this.props.entranceFx ?? 'Impacto';
+    const mkAnim = (dur, delay) => {
+      if (fx === 'Ninguna') return {};
+      const name = fx === 'Rebote' ? 'bounceIn' : 'impactIn';
+      return { animation: name + ' ' + dur + 's cubic-bezier(.2,.85,.3,1.15) both', animationDelay: delay + 's' };
+    };
+
+    const doneSet = s.doneIds || [];
+    const isDone = id => doneSet.indexOf(id) >= 0;
+
+    const days = s.rutinas.map((r, i) => {
+      const done = isDone(r._id);
+      return {
+        nombre: r.nombre,
+        funcion: pad(i + 1),
+        count: (r.ejercicios || []).length,
+        short: (r.nombre || '').slice(0, 3).toUpperCase(),
+        done,
+        medalMark: done ? '✓' : '🎭',
+        medalStyle: {
+          width: '100%', maxWidth: '50px', aspectRatio: '1', margin: '0 auto',
+          borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: 'Anton', fontSize: done ? '22px' : '18px',
+          background: done ? 'linear-gradient(135deg,#F0C64A,#C9962B)' : '#120c0b',
+          color: done ? '#0b0808' : '#5a4a3a',
+          border: done ? '2px solid #F0C64A' : '2px dashed #3a2418',
+          boxShadow: done ? '0 4px 14px rgba(240,198,74,.4)' : 'none',
+          transition: 'all .3s ease'
+        },
+        toggleLabel: done ? '✓ GANADA' : 'MARCAR GANADA',
+        toggleStyle: {
+          fontFamily: 'Oswald', fontWeight: '700', fontSize: '12px', letterSpacing: '1px',
+          borderRadius: '8px', cursor: 'pointer', transition: 'all .2s ease',
+          padding: done ? '7px 12px' : '6px 12px', minHeight: '44px',
+          border: done ? 'none' : '1.5px solid #C9962B',
+          background: done ? 'linear-gradient(135deg,#F0C64A,#C9962B)' : 'transparent',
+          color: done ? '#0b0808' : '#F0C64A'
+        },
+        progressLabel: (done ? 'Desmarcar' : 'Marcar') + ' entrenamiento de ' + r.nombre,
+        toggleDone: (ev) => this.toggleDone(r._id, ev),
+        open: ev => { if (ev && ev.stopPropagation) ev.stopPropagation(); this.open(i); },
+        _wrap: mkAnim(0.55, i * 0.09)
+      };
+    });
+
+    const today = new Date().getDay();
+    const schedule = { lunes: 1, martes: 2, 'miércoles': 3, miercoles: 3, jueves: 4, viernes: 5, 'sábado': 6, sabado: 6, domingo: 0 };
+    const upcoming = s.rutinas.map((r, i) => {
+      const key = (r.nombre || '').toLowerCase().trim();
+      const day = Object.keys(schedule).find(k => key.indexOf(k) >= 0);
+      const offset = day ? (schedule[day] - today + 7) % 7 : 7 + i;
+      return { i, offset };
+    }).sort((a, b) => a.offset - b.offset || a.i - b.i)[0];
+    const quickIndex = upcoming ? upcoming.i : 0;
+    const quickDay = {
+      label: upcoming && upcoming.offset === 0 ? 'ABRIR ENTRENAMIENTO DE HOY ▸' : 'IR AL PRÓXIMO ENTRENAMIENTO ▸',
+      open: () => this.open(quickIndex)
+    };
+    const videoRequests = s.rutinas.flatMap(r => (r.ejercicios || []).filter(e => e.solicitarVideo).map(e => ({
+      day: r.nombre, exercise: e.nombre,
+      status: e.videoEstado === 'atendida' ? 'Atendida' : 'Pendiente de revisión' + (e.videoSolicitadoAt ? ' desde ' + new Date(e.videoSolicitadoAt).toLocaleDateString('es-MX', { day: 'numeric', month: 'short' }) : '')
+    })));
+
+    const total = s.rutinas.length;
+    const doneCount = s.rutinas.filter(r => isDone(r._id)).length;
+    const pct = total ? Math.round(doneCount / total * 100) : 0;
+    const progress = {
+      total, doneCount, pct,
+      range: this.weekRange(),
+      allDone: total > 0 && doneCount === total,
+      fillStyle: {
+        height: '100%', width: pct + '%',
+        background: 'linear-gradient(90deg,#C1121F,#F0C64A)', borderRadius: '8px',
+        transition: 'width .55s cubic-bezier(.2,.8,.3,1)', boxShadow: '0 0 12px rgba(240,198,74,.5)'
+      }
+    };
+
+    let detail = null;
+    if (s.view === 'detail' && s.selected != null && s.rutinas[s.selected]) {
+      const r = s.rutinas[s.selected];
+      const exSet = s.exDone || [];
+      const isSerieDone = (exIdx, sIdx) => exSet.indexOf(r._id + '#' + exIdx + '#' + sIdx) >= 0;
+      const mkCheck = d => ({
+        flex: 'none', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto',
+        fontFamily: 'Anton', fontSize: '15px', transition: 'all .2s ease', padding: '0',
+        border: d ? 'none' : '2px solid #C9962B',
+        background: d ? 'linear-gradient(135deg,#F0C64A,#C9962B)' : 'transparent',
+        color: '#0b0808', boxShadow: d ? '0 3px 10px rgba(240,198,74,.4)' : 'none'
+      });
+      const ejercicios = s.detailEx.map((e, j) => {
+        const unidadPeso = this.weightUnitFromExercise(e);
+        const videoRequested = !!e.solicitarVideo;
+        const prevEx = (s.prevSnapshots || {})[e.nombre];
+        const prevSeries = (prevEx && prevEx.series) || [];
+        const series = (e.series || []).map((se, k) => {
+          const sdone = isSerieDone(j, k);
+          const pv = prevSeries[k];
+          const hasPrev = pv && (pv.peso || pv.reps);
+          const prevUnit = pv ? this.weightUnitFromValue(pv.peso, pv.unidadPeso || '') : '';
+          return {
+            num: k + 1,
+            peso: str(se.peso), reps: str(se.reps),
+            anterior: hasPrev ? (this.formatWeight(pv.peso || '—', prevUnit) + ' x ' + (pv.reps || '—')) : '—',
+            weightLabel: 'Peso de ' + e.nombre + ', serie ' + (k + 1) + ', en ' + (unidadPeso || 'unidad sin definir'),
+            repsLabel: 'Repeticiones de ' + e.nombre + ', serie ' + (k + 1),
+            checkLabel: (sdone ? 'Desmarcar' : 'Marcar') + ' serie ' + (k + 1) + ' de ' + e.nombre,
+            removeLabel: 'Eliminar serie ' + (k + 1) + ' de ' + e.nombre,
+            done: sdone,
+            checkMark: sdone ? '✓' : '',
+            checkStyle: mkCheck(sdone),
+            removeStyle: {
+              flex: 'none', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0',
+              fontFamily: 'Oswald', fontWeight: '700', fontSize: '13px', lineHeight: '1',
+              border: '1px solid #5a3410', background: 'transparent', color: '#9a6a4a', transition: 'all .15s ease'
+            },
+            onPeso: ev => this.updSerie(j, k, 'peso', ev.target.value),
+            onReps: ev => this.updSerie(j, k, 'reps', ev.target.value),
+            toggle: () => this.toggleSerie(r._id, j, k),
+            remove: () => this.removeSerie(j, k)
+          };
+        });
+        const done = series.length > 0 && series.every(x => x.done);
+        return {
+          nombre: str(e.nombre), num: pad(j + 1),
+          descanso: str(e.descanso), nota: str(e.nota),
+          unidadPeso, onUnidadPeso: ev => this.updField(j, 'unidadPeso', ev.target.value),
+          videoChecked: videoRequested, videoCheckMark: videoRequested ? '✓' : '',
+          videoStatusText: (s.videoDirty || []).includes(j) ? 'Guarda los cambios para enviar esta solicitud' : (e.videoEstado === 'atendida' ? 'Solicitud atendida' : 'Solicitud pendiente de revisión'),
+          videoCheckStyle: {
+            flex: 'none', width: '20px', height: '20px', borderRadius: '5px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: 'Anton', fontSize: '14px', color: '#0b0808',
+            border: videoRequested ? 'none' : '2px solid #C9962B',
+            background: videoRequested ? 'linear-gradient(135deg,#F0C64A,#C9962B)' : 'transparent'
+          },
+          videoToggleStyle: {
+            display: 'flex', alignItems: 'center', gap: '9px', margin: '11px 0',
+            padding: '9px 0', minHeight: '44px', background: 'transparent', border: '0', cursor: 'pointer',
+            color: videoRequested ? '#F0C64A' : '#9a8f82', fontFamily: 'Oswald',
+            fontWeight: '700', fontSize: '11px', letterSpacing: '1px', textAlign: 'left', position: 'relative', zIndex: '3'
+          },
+          toggleVideo: () => this.toggleVideo(j),
+          series, done,
+          nameStyle: {
+            flex: '1', minWidth: '0', fontFamily: "'DM Sans'", fontWeight: '700', fontSize: '18px',
+            background: 'transparent', border: 'none', outline: 'none',
+            borderBottom: '1px dashed rgba(240,198,74,.35)', padding: '2px 0',
+            color: done ? '#8a7f70' : '#F4ECD8',
+            textDecoration: done ? 'line-through' : 'none',
+            transition: 'color .2s ease'
+          },
+          addSerie: () => this.addSerie(j),
+          onNombre: ev => this.updField(j, 'nombre', ev.target.value),
+          onDescanso: ev => this.updField(j, 'descanso', ev.target.value),
+          onNota: ev => this.updField(j, 'nota', ev.target.value),
+          _wrap: mkAnim(0.5, j * 0.05)
+        };
+      });
+      const exTotal = ejercicios.length;
+      const exDoneCount = ejercicios.filter(x => x.done).length;
+      const exPct = exTotal ? Math.round(exDoneCount / exTotal * 100) : 0;
+      const dw = (s.wellness || {})[r._id] || {};
+      const segCol = v => v === 'bien' ? '#1f8a4c' : (v === 'regular' ? '#C9962B' : '#C1121F');
+      const mkSeg = (field, opt, label) => {
+        const active = dw[field] === opt;
+        const c = segCol(opt);
+        return {
+          label, active,
+          style: {
+            flex: '1', minHeight: '44px', textAlign: 'center', cursor: 'pointer', borderRadius: '10px',
+            padding: '9px 4px', fontFamily: 'Oswald', fontWeight: '700', fontSize: '13px',
+            letterSpacing: '.5px', transition: 'all .15s ease',
+            border: active ? ('1.5px solid ' + c) : '1.5px solid #3a2418',
+            background: active ? c : 'transparent',
+            color: active ? '#0b0808' : '#9a8f82'
+          },
+          on: () => this.setWellness(r._id, field, opt)
+        };
+      };
+      const wellness = {
+        periodo: !!dw.periodo,
+        periodoStyle: {
+          display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', width: '100%', textAlign: 'left', marginTop: '10px',
+          borderRadius: '12px', padding: '11px 13px', userSelect: 'none',
+          border: dw.periodo ? '1.5px solid #C1121F' : '1.5px solid #3a2418',
+          background: dw.periodo ? 'rgba(193,18,31,.16)' : '#120c0b', transition: 'all .15s ease'
+        },
+        boxStyle: {
+          width: '24px', height: '24px', borderRadius: '7px', flex: 'none',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: 'Anton', fontSize: '14px', color: '#0b0808',
+          border: dw.periodo ? 'none' : '2px solid #C9962B',
+          background: dw.periodo ? '#C1121F' : 'transparent'
+        },
+        periodoMark: dw.periodo ? '✓' : '',
+        togglePeriodo: () => this.setWellness(r._id, 'periodo', !dw.periodo),
+        hid: [mkSeg('hidratacion', 'bien', 'BIEN'), mkSeg('hidratacion', 'regular', 'REGULAR'), mkSeg('hidratacion', 'mal', 'MAL')],
+        est: [mkSeg('estres', 'bien', 'BIEN'), mkSeg('estres', 'regular', 'REGULAR'), mkSeg('estres', 'mal', 'MAL')]
+      };
+      detail = {
+        nombre: r.nombre,
+        funcion: pad(s.selected + 1),
+        deload: !!r.deloadActive,
+        ejercicios,
+        wellness,
+        exTotal, exDoneCount,
+        exFillStyle: {
+          height: '100%', width: exPct + '%',
+          background: 'linear-gradient(90deg,#C1121F,#F0C64A)', borderRadius: '6px',
+          transition: 'width .5s cubic-bezier(.2,.8,.3,1)'
+        },
+        back: () => this.back(),
+        save: () => this.save(),
+        saving: s.saving,
+        saveMsg: s.saveMsg,
+        statusMessage: s.saveMsg || (s.dirty ? 'Hay cambios sin guardar' : s.syncMessage),
+        syncError: s.syncState === 'error', retrySync: () => this.retrySync(),
+        saveLabel: s.saving ? 'GUARDANDO…' : 'GUARDAR CAMBIOS'
+      };
+    }
+
+    let history = null;
+    if (s.view === 'history') {
+      const weeks = this.getHistory().map((w, i) => ({ ...w, _wrap: mkAnim(0.5, i * 0.06) }));
+      const resultParas = (s.anResult || '').split(/\n{2,}/).map(t => t.trim()).filter(Boolean);
+      const vol = this.buildVolumeChart();
+      history = {
+        hasVolume: vol.hasVolume, chartW: vol.chartW, chartH: vol.chartH,
+        containerStyle: vol.containerStyle, areaStyle: vol.areaStyle, segments: vol.segments, dots: vol.dots,
+        xAxisRowStyle: vol.xAxisRowStyle, yMaxLabel: vol.yMaxLabel, yMinLabel: vol.yMinLabel, xFromLabel: vol.xFromLabel, xToLabel: vol.xToLabel,
+        weekOptions: vol.weekOptions || [], rangeWeek: vol.rangeWeek || '',
+        exerciseOptions: vol.exerciseOptions || [], exerciseKey: vol.exerciseKey || '', chartNote: vol.chartNote || '',
+        hasExerciseOptions: (vol.exerciseOptions || []).length > 0,
+        onExerciseChange: ev => this.setVolExercise(ev.target.value),
+        hasWeekOptions: (vol.weekOptions || []).length > 0, volEmpty: !vol.hasVolume,
+        setVolAll: () => this.setVolRangeAll(),
+        onVolWeekChange: ev => this.setVolRangeWeek(ev.target.value),
+        volAllStyle: {
+          fontFamily: 'Oswald', fontWeight: '700', fontSize: '11px', letterSpacing: '.5px', cursor: 'pointer',
+          padding: '6px 12px', borderRadius: '8px',
+          border: !vol.rangeWeek ? 'none' : '1.5px solid #3a2418',
+          background: !vol.rangeWeek ? 'linear-gradient(135deg,#F0C64A,#C9962B)' : 'transparent',
+          color: !vol.rangeWeek ? '#0b0808' : '#9a8f82'
+        },
+        fromLabel: vol.fromLabel, toLabel: vol.toLabel,
+        back: () => this.back(), weeks, empty: !s.historyLoading && weeks.length === 0, notEmpty: true,
+        loading: s.historyLoading, loadError: s.historyError,
+        geminiKey: s.geminiKey || '',
+        onKey: ev => this.setGeminiKey(ev.target.value),
+        anFrom: s.anFrom, anTo: s.anTo,
+        onFrom: ev => this.setState({ anFrom: ev.target.value }),
+        onTo: ev => this.setState({ anTo: ev.target.value }),
+        includeWellness: s.anIncludeWellness,
+        onIncludeWellness: ev => this.setState({ anIncludeWellness: !!ev.target.checked }),
+        run: () => this.runAnalysis(),
+        anLoading: s.anLoading, anError: s.anError,
+        anLabel: s.anLoading ? 'ANALIZANDO…' : 'GENERAR ANÁLISIS',
+        hasResult: resultParas.length > 0, resultNode: this.renderMarkdown(s.anResult)
+      };
+    }
+
+    return {
+      loading: s.loading,
+      error: s.error,
+      themeIsLight: s.theme === 'light',
+      themeLabel: s.theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro',
+      themeText: s.theme === 'light' ? 'MODO CLARO' : 'MODO OSCURO',
+      themeThumbStyle: { left: s.theme === 'light' ? '18px' : '2px' },
+      toggleTheme: () => this.toggleTheme(),
+      isList: !s.loading && !s.error && s.view === 'list',
+      isDetail: !s.loading && !s.error && s.view === 'detail',
+      isHistory: !s.loading && !s.error && s.view === 'history',
+      openHistory: () => this.openHistory(),
+      sunburst: this.props.showSunburst ?? true,
+      alumna: s.alumna,
+      days, quickDay, videoRequests, hasVideoRequests: videoRequests.length > 0,
+      syncMessage: s.syncMessage, hasSyncMessage: !!s.syncMessage,
+      syncError: s.syncState === 'error', retrySync: () => this.retrySync(),
+      detail, progress, history,
+      bellShow: s.bellShow
+    };
+  }
+}
+</script>
+
+
+</body></html>

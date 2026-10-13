@@ -259,6 +259,18 @@
   }
   html,body{margin:0;background:var(--app-bg);color:var(--text-strong);-webkit-tap-highlight-color:transparent;transition:background-color .2s ease,color .2s ease}
   input{font-family:inherit}
+  .rp-feedback{position:relative;z-index:3;margin:12px 0;border:1px solid var(--surface-border);border-radius:10px;background:var(--field-bg);color:var(--text-soft)}
+  .rp-feedback summary{min-height:44px;box-sizing:border-box;padding:11px;cursor:pointer;font-family:Oswald,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;color:var(--text-accent)}
+  .rp-feedback-content{padding:0 11px 12px;font-family:'DM Sans',sans-serif;font-size:12px;line-height:1.45}
+  .rp-feedback-hint{color:var(--text-muted);margin:0 0 10px}
+  .rp-feedback-grid{display:grid;grid-template-columns:26px minmax(0,1fr) 76px 55px;gap:5px;align-items:center;margin:7px 0}
+  .rp-feedback-grid>*{min-width:0}
+  .rp-feedback-control{box-sizing:border-box;width:100%;min-height:44px;padding:7px 5px;border:1px solid var(--surface-border);border-radius:8px;background:var(--card-bg);color:var(--text-strong);font-family:Oswald,sans-serif;font-size:14px}
+  .rp-feedback-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+  .rp-feedback-label{display:block;margin:0 0 4px;color:var(--text-accent);font-family:Oswald,sans-serif;font-weight:600;font-size:10px;letter-spacing:.8px}
+  .rp-feedback-check{display:flex;align-items:center;gap:8px;min-height:44px;color:var(--text-soft);font-size:12px}
+  .rp-feedback-check input{width:20px;height:20px;flex:none;accent-color:#C9962B}
+  @media(max-width:360px){.rp-feedback-grid{grid-template-columns:23px minmax(0,1fr) 62px 48px;gap:4px}.rp-feedback-control{font-size:12px;padding:5px 2px}}
   .theme-toggle{position:absolute;top:max(10px,env(safe-area-inset-top));right:12px;z-index:5;min-width:108px;min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 10px;border:1px solid rgba(240,198,74,.72);border-radius:999px;color:#F4ECD8;background:rgba(11,8,8,.9);box-shadow:0 5px 16px rgba(0,0,0,.25);font-family:Oswald,sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   .theme-toggle:focus-visible{outline:3px solid #fff1b8;outline-offset:3px}
   .theme-toggle-track{position:relative;display:block;flex:none;width:40px;height:24px;border:1px solid #F0C64A;border-radius:999px;background:#3a2418}
@@ -510,6 +522,32 @@
               <button sc-camel-on-click="{{ ex.addSerie }}" style="width:100%;margin-top:4px;background:transparent;border:1.5px dashed #C9962B;border-radius:10px;padding:10px;font-family:Oswald;font-weight:700;font-size:12px;letter-spacing:1.5px;color:#F0C64A;cursor:pointer;position:relative;z-index:3">+ AGREGAR SERIE</button>
               <button type="button" role="checkbox" aria-checked="{{ ex.videoChecked }}" sc-camel-on-click="{{ ex.toggleVideo }}" style="{{ ex.videoToggleStyle }}"><span aria-hidden="true" style="{{ ex.videoCheckStyle }}">{{ ex.videoCheckMark }}</span><span>SOLICITAR VIDEO</span></button>
               <sc-if value="{{ ex.videoChecked }}"><div style="font-family:'DM Sans';font-size:12px;color:#F0C64A;margin-bottom:8px">{{ ex.videoStatusText }}</div></sc-if>
+              <details class="rp-feedback">
+                <summary>RESULTADO REAL Y SENSACIONES · {{ ex.feedbackStatus }}</summary>
+                <div class="rp-feedback-content">
+                  <p class="rp-feedback-hint">Anota lo que hiciste, no el objetivo de arriba. Se guarda automáticamente y no cambia tu rutina.</p>
+                  <div class="rp-feedback-grid" style="font-family:Oswald;font-size:10px;font-weight:600;color:var(--text-accent);letter-spacing:.5px"><span>#</span><span>CARGA REAL</span><span>UNIDAD</span><span>REP</span></div>
+                  <sc-for list="{{ ex.actualSeries }}" as="se" hint-placeholder-count="3">
+                    <div class="rp-feedback-grid">
+                      <span style="font-family:Anton;text-align:center;color:var(--text-accent)">{{ se.num }}</span>
+                      <input class="rp-feedback-control" value="{{ se.peso }}" sc-camel-on-change="{{ se.onPeso }}" inputmode="decimal" aria-label="Carga realmente realizada de {{ ex.nombre }}, serie {{ se.num }}" placeholder="—">
+                      <select class="rp-feedback-control" value="{{ se.unidadPeso }}" sc-camel-on-change="{{ se.onUnidadPeso }}" aria-label="Unidad real de {{ ex.nombre }}, serie {{ se.num }}"><option value="">—</option><option value="KG">KG</option><option value="LB">LB</option><option value="NIVEL">NIVEL</option><option value="SIN_CARGA">SIN CARGA</option></select>
+                      <input class="rp-feedback-control" value="{{ se.reps }}" sc-camel-on-change="{{ se.onReps }}" inputmode="numeric" aria-label="Repeticiones realmente realizadas de {{ ex.nombre }}, serie {{ se.num }}" placeholder="—">
+                    </div>
+                  </sc-for>
+                  <div class="rp-feedback-fields">
+                    <div><label class="rp-feedback-label">RIR (REP EN RESERVA)</label><select class="rp-feedback-control" value="{{ ex.rir }}" sc-camel-on-change="{{ ex.onRir }}" aria-label="Repeticiones en reserva de {{ ex.nombre }}"><option value="">Sin registrar</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6+">6 o más</option><option value="no_se">No sé</option></select></div>
+                    <div><label class="rp-feedback-label">DIFICULTAD</label><select class="rp-feedback-control" value="{{ ex.difficulty }}" sc-camel-on-change="{{ ex.onDifficulty }}" aria-label="Dificultad de {{ ex.nombre }}"><option value="">Sin registrar</option><option value="facil">Fácil</option><option value="adecuada">Adecuada</option><option value="muy_dificil">Muy difícil</option></select></div>
+                    <div><label class="rp-feedback-label">RECUPERACIÓN</label><select class="rp-feedback-control" value="{{ ex.recovery }}" sc-camel-on-change="{{ ex.onRecovery }}" aria-label="Recuperación antes de {{ ex.nombre }}"><option value="">Sin registrar</option><option value="buena">Buena</option><option value="parcial">Parcial</option><option value="insuficiente">Insuficiente</option><option value="no_se">No sé</option></select></div>
+                    <div><label class="rp-feedback-label">BOMBEO</label><select class="rp-feedback-control" value="{{ ex.pump }}" sc-camel-on-change="{{ ex.onPump }}" aria-label="Bombeo de {{ ex.nombre }}"><option value="">Sin registrar</option><option value="bajo">Bajo</option><option value="medio">Medio</option><option value="alto">Alto</option><option value="no_se">No sé</option></select></div>
+                    <label class="rp-feedback-check"><input type="checkbox" checked="{{ ex.soreness }}" sc-camel-on-change="{{ ex.onSoreness }}">Agujetas que limitan movimiento</label>
+                    <label class="rp-feedback-check"><input type="checkbox" checked="{{ ex.discomfort }}" sc-camel-on-change="{{ ex.onDiscomfort }}">Molestia articular</label>
+                  </div>
+                  <label class="rp-feedback-label" style="margin-top:10px">COMENTARIO (OPCIONAL)</label>
+                  <input class="rp-feedback-control" value="{{ ex.feedbackComment }}" sc-camel-on-change="{{ ex.onFeedbackComment }}" aria-label="Comentario del resultado de {{ ex.nombre }}" placeholder="Técnica, equipo o sensación">
+                  <p class="rp-feedback-hint" style="margin:9px 0 0">{{ ex.feedbackHint }}</p>
+                </div>
+              </details>
               <div style="margin:14px 0 11px;position:relative;z-index:3">
                 <div style="font-family:Oswald;font-size:10px;font-weight:600;letter-spacing:1.5px;color:#C9962B;margin-bottom:5px">NOTA</div>
                 <input value="{{ ex.nota }}" sc-camel-on-change="{{ ex.onNota }}" placeholder="—" style="width:100%;box-sizing:border-box;font-family:'DM Sans';font-size:15px;color:#F4ECD8;background:#1e130c;border:1px solid #5a3410;border-radius:10px;padding:9px 11px;outline:none">
@@ -715,7 +753,7 @@ class Component extends DCLogic {
     saving: false, saveMsg: '', dirty: false, videoDirty: [], syncState: '', syncMessage: '',
     rutinas: [], alumna: 'Jessi', detailEx: [],
     doneIds: [], exDone: [], bellShow: false, prevSnapshots: {},
-    wellness: {}, weekWellness: {}, sessionLogs: {}, historyLoading: false, historyError: false,
+    wellness: {}, weekWellness: {}, sessionLogs: {}, exerciseFeedback: {}, historyLoading: false, historyError: false,
     selectedVolPoint: null, volRangeWeek: '', volExerciseKey: '',
     anFrom: '', anTo: '', anResult: '', anLoading: false, anError: '', anIncludeWellness: false,
     geminiKey: '',
@@ -848,13 +886,17 @@ class Component extends DCLogic {
       (this.state.detailEx || []).forEach((e, j) => {
         (e.series || []).forEach((se, k) => {
           const key = j + '#' + k;
-          if (checked.has(dayId + '#' + key) && (key === newlyCheckedKey || prior.has(key))) {
+          const actual = (((this.state.exerciseFeedback || {})[this.feedbackField(dayId, j)] || {}).sets || [])[k] || {};
+          const hasActual = !!(('' + (actual.peso || '')).trim() || ('' + (actual.reps || '')).trim() || actual.unidadPeso === 'SIN_CARGA');
+          if (checked.has(dayId + '#' + key) && (key === newlyCheckedKey || prior.has(key) || hasActual)) {
+            const old = prior.get(key);
+            // Los registros anteriores no indican si el peso era objetivo o ejecución: conservarlos sin reclasificarlos.
+            if (old && !old.source && !this.actualSetComplete(actual)) return;
             prior.set(key, {
               key, ejercicio: e.nombre || '', serie: k + 1,
-              peso: se.peso == null ? '' : '' + se.peso,
-              reps: se.reps == null ? '' : '' + se.reps,
-              unidadPeso: this.weightUnitFromExercise(e),
-              recordedAt: (prior.get(key) || {}).recordedAt || now
+              peso: actual.peso || '', reps: actual.reps || '', unidadPeso: actual.unidadPeso || '',
+              source: hasActual ? (this.actualSetComplete(actual) ? 'explicit' : 'explicit_partial') : 'not_recorded',
+              recordedAt: (old || {}).recordedAt || now
             });
           } else prior.delete(key);
         });
@@ -875,6 +917,86 @@ class Component extends DCLogic {
     this._sessionLogs = logs;
     this.setState({ sessionLogs: logs });
     return log;
+  }
+
+  feedbackField(dayId, exIdx) { return 'exerciseFeedback_' + dayId + '_' + exIdx; }
+
+  actualSetComplete(se) {
+    const reps = Number(('' + (se.reps || '')).trim());
+    const unit = se.unidadPeso || '';
+    const load = Number(('' + (se.peso || '')).trim().replace(',', '.'));
+    return Number.isInteger(reps) && reps > 0 &&
+      (unit === 'SIN_CARGA' || (['KG', 'LB', 'NIVEL'].includes(unit) && Number.isFinite(load) && load > 0));
+  }
+
+  pendingFeedback(week) {
+    try {
+      const saved = JSON.parse(localStorage.getItem('jessi-feedback-pending-' + week) || '{}');
+      return saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {};
+    } catch (e) { return {}; }
+  }
+
+  persistPendingFeedback(week, field, value) {
+    try {
+      const pending = this.pendingFeedback(week);
+      pending[field] = value;
+      localStorage.setItem('jessi-feedback-pending-' + week, JSON.stringify(pending));
+    } catch (e) {}
+  }
+
+  clearPendingFeedback(week, field, updatedAt) {
+    try {
+      const pending = this.pendingFeedback(week);
+      if (!pending[field] || pending[field].updatedAt !== updatedAt) return;
+      delete pending[field];
+      const key = 'jessi-feedback-pending-' + week;
+      if (Object.keys(pending).length) localStorage.setItem(key, JSON.stringify(pending));
+      else localStorage.removeItem(key);
+    } catch (e) {}
+  }
+
+  replayPendingFeedback() {
+    try {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && /^jessi-feedback-pending-\d{4}-W\d{2}$/.test(key)) keys.push(key);
+      }
+      keys.forEach(key => {
+        const week = key.slice('jessi-feedback-pending-'.length);
+        Object.entries(this.pendingFeedback(week)).forEach(([field, value]) => {
+          if (!/^exerciseFeedback_[A-Za-z0-9]+_\d+$/.test(field) || !value || typeof value !== 'object') return;
+          this.queueProgress({ [field]: value, updatedAt: Date.now() }, week)
+            .then(ok => { if (ok) this.clearPendingFeedback(week, field, value.updatedAt); });
+        });
+      });
+    } catch (e) {}
+  }
+
+  updateExerciseFeedback(exIdx, field, value, setIdx) {
+    const r = this.state.rutinas[this.state.selected];
+    const e = (this.state.detailEx || [])[exIdx];
+    if (!r || !e) return;
+    const week = this.weekKey();
+    const key = this.feedbackField(r._id, exIdx);
+    const old = (this.state.exerciseFeedback || {})[key] || {};
+    const next = {
+      schemaVersion: 1, dayId: r._id, exerciseIndex: exIdx, exerciseName: e.nombre || '',
+      sets: (old.sets || []).map(se => ({ ...se })),
+      rir: old.rir || '', difficulty: old.difficulty || '', recovery: old.recovery || '',
+      pump: old.pump || '', soreness: !!old.soreness, discomfort: !!old.discomfort,
+      comment: old.comment || '', updatedAt: Date.now()
+    };
+    if (setIdx != null) {
+      const se = next.sets[setIdx] || { peso: '', reps: '', unidadPeso: this.weightUnitFromExercise(e) || '' };
+      next.sets[setIdx] = { ...se, [field]: ('' + value).trim(), recordedAt: Date.now() };
+    } else next[field] = typeof value === 'string' ? value.trim() : value;
+    this.persistPendingFeedback(week, key, next);
+    this.setState({ exerciseFeedback: { ...(this.state.exerciseFeedback || {}), [key]: next } });
+    const log = this.captureSession(r._id, this.state.doneIds, this.state.exDone, false);
+    const patch = { [key]: next, updatedAt: Date.now() };
+    if (log) patch['sessionLog_' + r._id] = log;
+    this.queueProgress(patch, week).then(ok => { if (ok) this.clearPendingFeedback(week, key, next.updatedAt); });
   }
 
   queueProgress(patch, week) {
@@ -938,20 +1060,25 @@ class Component extends DCLogic {
     if (this._unsub) { this._unsub(); this._unsub = null; }
     const fs = this._fs;
     this._unsub = fs.onSnapshot(fs.doc(this._db, 'progreso', wk), (snap) => {
-      const d = (snap && snap.exists && snap.exists()) ? snap.data() : null;
+      const d = { ...((snap && snap.exists && snap.exists()) ? snap.data() : {}) };
+      (this._progressQueue || []).filter(item => item.week === wk).forEach(item => Object.assign(d, item.patch));
       const doneIds = (d && d.doneIds) || [];
       const exDone = (d && d.exDone) || [];
       const wellness = (d && d.wellness) || {};
+      const exerciseFeedback = {};
+      Object.entries(d || {}).forEach(([key, value]) => {
+        if (key.indexOf('exerciseFeedback_') === 0 && value && typeof value === 'object') exerciseFeedback[key] = value;
+      });
+      Object.assign(exerciseFeedback, this.pendingFeedback(wk));
       const sessionLogs = {};
       (this.state.rutinas || []).forEach(r => {
         const log = d && d['sessionLog_' + r._id];
         if (log) sessionLogs[r._id] = log;
       });
-      if (this._progressQueue && this._progressQueue.length) return;
       try { localStorage.setItem('jessi-prog-' + wk, JSON.stringify(doneIds)); } catch (e) {}
       try { localStorage.setItem('jessi-ex-' + wk, JSON.stringify(exDone)); } catch (e) {}
       this._sessionLogs = sessionLogs;
-      this.setState({ doneIds, exDone, wellness, sessionLogs });
+      this.setState({ doneIds, exDone, wellness, sessionLogs, exerciseFeedback });
     }, (err) => console.error('onSnapshot', err));
   }
 
@@ -980,7 +1107,7 @@ class Component extends DCLogic {
     try { const a = localStorage.getItem('jessi-prog-' + wk); if (a) doneIds = JSON.parse(a) || []; } catch (e) {}
     try { const b = localStorage.getItem('jessi-ex-' + wk); if (b) exDone = JSON.parse(b) || []; } catch (e) {}
     this._sessionLogs = {};
-    this.setState({ doneIds, exDone, sessionLogs: {}, wellness: {} });
+    this.setState({ doneIds, exDone, sessionLogs: {}, wellness: {}, exerciseFeedback: this.pendingFeedback(wk) });
     this.subscribeWeek(wk);
   }
 
@@ -1122,13 +1249,28 @@ class Component extends DCLogic {
         const best = {};
         (log.series || []).forEach(se => {
           const key = (log.dayName || '') + '#' + (se.ejercicio || '');
-          if (!best[key] || se.serie < best[key].serie) best[key] = se;
+          if (!best[key] || (se.source === 'explicit' && best[key].source !== 'explicit') || (se.source === best[key].source && se.serie < best[key].serie)) best[key] = se;
         });
         Object.entries(best).forEach(([key, se]) => {
           const parsed = this.parseComparableWeight(se.peso, se.unidadPeso);
-          if (parsed) values[key] = { ...parsed, source: 'serie realizada', serie: se.serie };
+          if (parsed) values[key] = { ...parsed, source: se.source === 'explicit' ? 'resultado real registrado' : 'marca histórica sin carga verificada', serie: se.serie };
           else excluded++;
         });
+      });
+      Object.entries(d).filter(([key]) => key.indexOf('exerciseFeedback_') === 0).forEach(([, feedback]) => {
+        if (!feedback || !feedback.dayId) return;
+        const log = d['sessionLog_' + feedback.dayId] || {};
+        const key = (log.dayName || (this.state.rutinas.find(r => r._id === feedback.dayId) || {}).nombre || '') + '#' + (feedback.exerciseName || '');
+        const marked = new Set(d.exDone || []);
+        const first = (feedback.sets || []).findIndex((se, idx) => marked.has(feedback.dayId + '#' + feedback.exerciseIndex + '#' + idx) && this.actualSetComplete(se));
+        if (first >= 0) {
+          const se = feedback.sets[first];
+          const parsed = this.parseComparableWeight(se.peso, se.unidadPeso);
+          if (parsed) values[key] = { ...parsed, source: 'resultado real registrado', serie: first + 1 };
+          else { delete values[key]; excluded++; }
+        } else if ((feedback.sets || []).length && (d.exDone || []).some(mark => mark.indexOf(feedback.dayId + '#' + feedback.exerciseIndex + '#') === 0)) {
+          delete values[key];
+        }
       });
       byWeek[w.wk] = values;
       Object.keys(values).forEach(key => { optionCounts[key] = (optionCounts[key] || 0) + 1; });
@@ -1147,7 +1289,7 @@ class Component extends DCLogic {
       return { value: w.wk, label: mon.getUTCDate() + ' ' + M[mon.getUTCMonth()] + '–' + sun.getUTCDate() + ' ' + M[sun.getUTCMonth()] };
     });
 
-    const chartNote = 'Serie registrada de menor número por día y ejercicio. LB se convierte a KG; se excluyen ' + excluded + ' cargas sin unidad o formato comparable. «Carga guardada» no confirma ejecución.';
+    const chartNote = 'Resultado real explícito cuando existe; las marcas históricas y cargas guardadas no confirman ejecución. LB se convierte a KG; se excluyen ' + excluded + ' cargas sin unidad o formato comparable.';
     if (!points.length) return { hasVolume: false, weekOptions, rangeWeek, exerciseOptions, exerciseKey, chartNote };
 
     let max = 0;
@@ -1372,8 +1514,23 @@ class Component extends DCLogic {
       Object.keys(d).filter(key => key.indexOf('sessionLog_') === 0).forEach(key => {
         const log = d[key] || {};
         if (!Array.isArray(log.series) || !log.series.length) return;
-        out += 'Series realizadas de ' + (log.dayName || 'día sin nombre') + ':\n';
-        log.series.forEach(se => { out += '  ' + (se.ejercicio || 'Ejercicio') + ', serie ' + se.serie + ': ' + (se.peso || '?') + ' ' + (se.unidadPeso || 'unidad desconocida') + ' x ' + (se.reps || '?') + '\n'; });
+        out += 'Marcas de series de ' + (log.dayName || 'día sin nombre') + ':\n';
+        log.series.forEach(se => {
+          const label = se.source === 'explicit' ? 'resultado real explícito' : (se.source ? 'resultado real incompleto o ausente' : 'marca histórica: objetivo no verificado');
+          out += '  ' + (se.ejercicio || 'Ejercicio') + ', serie ' + se.serie + ' (' + label + '): ' + (se.peso || '?') + ' ' + (se.unidadPeso || 'unidad desconocida') + ' x ' + (se.reps || '?') + '\n';
+        });
+      });
+      Object.entries(d).filter(([key]) => key.indexOf('exerciseFeedback_') === 0).forEach(([, fb]) => {
+        if (!fb || typeof fb !== 'object') return;
+        const parts = [];
+        if (fb.rir) parts.push('RIR: ' + fb.rir);
+        if (fb.difficulty) parts.push('dificultad: ' + fb.difficulty);
+        if (includeWellness && fb.recovery) parts.push('recuperación: ' + fb.recovery);
+        if (fb.pump) parts.push('bombeo: ' + fb.pump);
+        if (includeWellness && fb.soreness) parts.push('agujetas limitantes: sí');
+        if (includeWellness && fb.discomfort) parts.push('molestia articular: sí');
+        if (includeWellness && fb.comment) parts.push('comentario: ' + fb.comment);
+        if (parts.length) out += '  Feedback de ' + (fb.exerciseName || 'ejercicio') + ': ' + parts.join(', ') + '\n';
       });
     });
     return out.trim() || 'No hay datos registrados en este rango.';
@@ -1383,7 +1540,7 @@ class Component extends DCLogic {
     const key = (this.GEMINI_API_KEY || this.state.geminiKey || '').trim();
     if (!key) { this.setState({ anError: 'Falta la clave de Gemini. Agrégala en Firestore: colección "config", documento "app", campo "geminiKey".' }); return; }
     const data = this.buildAnalysisText(this.state.anFrom, this.state.anTo, this.state.anIncludeWellness);
-    const prompt = 'Analiza en español los registros de entrenamiento de Jessi. Resume la constancia, las tendencias verificables y los huecos de datos. Distingue series realizadas de cargas guardadas que no prueban ejecución. No infieras causas fisiológicas, médicas ni relaciones causales; si mencionas bienestar, trátalo solo como contexto descriptivo y señala cuando haya pocos registros. No propongas modificar la rutina. Usa secciones breves y cifras comprobables.\n\nDATOS:\n' + data;
+    const prompt = 'Analiza en español los registros de entrenamiento de Jessi. Resume la constancia, las tendencias verificables y los huecos de datos. Solo los resultados reales explícitos confirman carga y repeticiones ejecutadas; las marcas históricas y cargas guardadas no lo prueban. El feedback es subjetivo. No infieras causas fisiológicas, médicas ni relaciones causales; si mencionas bienestar, trátalo solo como contexto descriptivo y señala cuando haya pocos registros. No propongas modificar la rutina. Usa secciones breves y cifras comprobables.\n\nDATOS:\n' + data;
     this.setState({ anLoading: true, anError: '', anResult: '' });
     try {
       const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + encodeURIComponent(key), {
@@ -1446,8 +1603,9 @@ class Component extends DCLogic {
       try { const rex = localStorage.getItem('jessi-ex-' + this.weekKey()); if (rex) exDone = JSON.parse(rex) || []; } catch (e) {}
       let geminiKey = '';
       try { geminiKey = localStorage.getItem('jessi-gemini-key') || ''; } catch (e) {}
-      this.setState({ rutinas, alumna, loading: false, doneIds, exDone, geminiKey });
+      this.setState({ rutinas, alumna, loading: false, doneIds, exDone, geminiKey, exerciseFeedback: this.pendingFeedback(this.weekKey()) });
       this.subscribeWeek(this.weekKey());
+      this.replayPendingFeedback();
       try {
         const cfg = await fs.getDoc(fs.doc(this._db, 'config', 'app'));
         const k = (cfg.exists() ? cfg.data() : {}).geminiKey;
@@ -1752,6 +1910,8 @@ class Component extends DCLogic {
       const ejercicios = s.detailEx.map((e, j) => {
         const unidadPeso = this.weightUnitFromExercise(e);
         const videoRequested = !!e.solicitarVideo;
+        const feedback = (s.exerciseFeedback || {})[this.feedbackField(r._id, j)] || {};
+        const actualSets = feedback.sets || [];
         const prevEx = (s.prevSnapshots || {})[e.nombre];
         const prevSeries = (prevEx && prevEx.series) || [];
         const series = (e.series || []).map((se, k) => {
@@ -1783,9 +1943,32 @@ class Component extends DCLogic {
           };
         });
         const done = series.length > 0 && series.every(x => x.done);
+        const marked = series.filter(x => x.done).length;
+        const complete = series.filter((x, k) => x.done && this.actualSetComplete(actualSets[k] || {})).length;
+        const actualSeries = series.map((_, k) => {
+          const actual = actualSets[k] || {};
+          return {
+            num: k + 1, peso: str(actual.peso), reps: str(actual.reps),
+            unidadPeso: actual.unidadPeso || unidadPeso || '',
+            onPeso: ev => this.updateExerciseFeedback(j, 'peso', ev.target.value, k),
+            onUnidadPeso: ev => this.updateExerciseFeedback(j, 'unidadPeso', ev.target.value, k),
+            onReps: ev => this.updateExerciseFeedback(j, 'reps', ev.target.value, k)
+          };
+        });
         return {
           nombre: str(e.nombre), num: pad(j + 1),
           descanso: str(e.descanso), nota: str(e.nota),
+          actualSeries, feedbackStatus: complete + '/' + marked + ' SERIES MARCADAS CON DATOS',
+          feedbackHint: marked && complete < marked ? 'Faltan resultados reales en ' + (marked - complete) + ' serie(s) marcada(s).' : (marked ? 'Las series marcadas tienen carga y repeticiones reales.' : 'Puedes registrar el resultado al terminar cada serie.'),
+          rir: feedback.rir || '', difficulty: feedback.difficulty || '', recovery: feedback.recovery || '', pump: feedback.pump || '',
+          soreness: !!feedback.soreness, discomfort: !!feedback.discomfort, feedbackComment: feedback.comment || '',
+          onRir: ev => this.updateExerciseFeedback(j, 'rir', ev.target.value),
+          onDifficulty: ev => this.updateExerciseFeedback(j, 'difficulty', ev.target.value),
+          onRecovery: ev => this.updateExerciseFeedback(j, 'recovery', ev.target.value),
+          onPump: ev => this.updateExerciseFeedback(j, 'pump', ev.target.value),
+          onSoreness: ev => this.updateExerciseFeedback(j, 'soreness', ev.target.checked),
+          onDiscomfort: ev => this.updateExerciseFeedback(j, 'discomfort', ev.target.checked),
+          onFeedbackComment: ev => this.updateExerciseFeedback(j, 'comment', ev.target.value),
           unidadPeso, onUnidadPeso: ev => this.updField(j, 'unidadPeso', ev.target.value),
           videoChecked: videoRequested, videoCheckMark: videoRequested ? '✓' : '',
           videoStatusText: (s.videoDirty || []).includes(j) ? 'Guarda los cambios para enviar esta solicitud' : (e.videoEstado === 'atendida' ? 'Solicitud atendida' : 'Solicitud pendiente de revisión'),

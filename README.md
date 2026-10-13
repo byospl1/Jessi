@@ -47,5 +47,6 @@ Jessi/
 - La propuesta del piloto supervisado está en [`PROPUESTA_PROGRESION.md`](PROPUESTA_PROGRESION.md).
 
 - `progreso/{semana}` guarda marcas de días/series y, desde esta versión, `plannedDayIds` y `sessionLog_<id del día>` con series marcadas y hora. `snapshots` conserva cargas guardadas al editar; no confirma por sí solo que se hayan realizado.
+- La captura nueva de resultados vive en `progreso/{semana}.exerciseFeedback_<id del día>_<índice de ejercicio>` (esquema 1): `sets` con carga, unidad, repeticiones y hora explícitas; RIR, dificultad, recuperación, bombeo, agujetas limitantes, molestia articular y comentario opcional. Las cargas/repeticiones parten vacías, se sincronizan por ejercicio y quedan localmente pendientes si falla la red. Una marca nueva sin resultado queda como `source: not_recorded`; las series antiguas sin `source` se conservan como registros no verificados. Esto no cambia la rutina ni activa el algoritmo adaptativo.
 - El historial antiguo no siempre conserva la cantidad de días programados: cuando usa los cuatro días actuales como referencia, la app lo indica. Una semana sin documento se muestra como «sin registro», no como cero.
 - Los reportes privados se excluyen del repositorio. La lectura anónima de datos y la clave de Gemini siguen siendo un riesgo pendiente; esta entrega no cambia autenticación, reglas ni claves.

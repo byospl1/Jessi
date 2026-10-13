@@ -13,7 +13,8 @@ const localStorage = {
   get length() { return memory.size; },
   key(i) { return [...memory.keys()][i] || null; },
   getItem(k) { return memory.get(k) ?? null; },
-  setItem(k, v) { memory.set(k, String(v)); }
+  setItem(k, v) { memory.set(k, String(v)); },
+  removeItem(k) { memory.delete(k); }
 };
 const context = vm.createContext({
   localStorage,
@@ -55,7 +56,7 @@ test('el gráfico convierte LB a KG y excluye valores sin unidad', () => {
   assert.match(chart.dots[1].ariaLabel, /121.25 LB/);
 });
 
-test('la marca de serie crea una sesión real con hora, carga y unidad', () => {
+test('marcar una serie nueva no copia el objetivo como resultado real', () => {
   const app = makeApp();
   app.weekKey = () => '2026-W40';
   app.state.rutinas = [{ _id: 'lun', nombre: 'Lunes' }];
@@ -64,10 +65,113 @@ test('la marca de serie crea una sesión real con hora, carga y unidad', () => {
   app.state.detailEx = [{ nombre: 'Hip Thrust', unidadPeso: 'KG', series: [{ peso: '55', reps: '9' }] }];
   const log = app.captureSession('lun', ['lun'], ['lun#0#0'], false, '0#0');
   assert.equal(log.series.length, 1);
-  assert.equal(log.series[0].peso, '55');
-  assert.equal(log.series[0].unidadPeso, 'KG');
+  assert.equal(log.series[0].peso, '');
+  assert.equal(log.series[0].reps, '');
+  assert.equal(log.series[0].unidadPeso, '');
+  assert.equal(log.series[0].source, 'not_recorded');
   assert.ok(log.series[0].recordedAt > 0);
   assert.ok(log.completedAt > 0);
+});
+
+test('el resultado explícito se guarda por ejercicio sin editar la rutina', async () => {
+  memory.clear();
+  const app = makeApp();
+  app.weekKey = () => '2026-W42';
+  app.state.rutinas = [{ _id: 'mie', nombre: 'Miércoles' }];
+  app.state.selected = 0;
+  app.state.view = 'detail';
+  app.state.detailEx = [{ nombre: 'Remo', unidadPeso: 'KG', series: [{ peso: '40', reps: '8' }] }];
+  app.state.exDone = ['mie#0#0'];
+  const writes = [];
+  app._db = {};
+  app._fs = {
+    doc(_db, collection, id) { return { collection, id }; },
+    async setDoc(ref, patch) { writes.push({ ref, patch }); }
+  };
+  app.updateExerciseFeedback(0, 'peso', '37.5', 0);
+  app.updateExerciseFeedback(0, 'reps', '9', 0);
+  app.updateExerciseFeedback(0, 'rir', '2');
+  await app._syncPromise;
+  const key = 'exerciseFeedback_mie_0';
+  const feedback = app.state.exerciseFeedback[key];
+  assert.equal(feedback.sets[0].peso, '37.5');
+  assert.equal(feedback.sets[0].reps, '9');
+  assert.equal(feedback.sets[0].unidadPeso, 'KG');
+  assert.equal(feedback.rir, '2');
+  assert.equal(app.state.detailEx[0].series[0].peso, '40');
+  assert.equal(app.state.dirty, false);
+  assert.equal(app.state.sessionLogs.mie.series[0].source, 'explicit');
+  assert.ok(writes.length >= 1);
+  assert.ok(writes.every(w => w.ref.collection === 'progreso' && w.ref.id === '2026-W42'));
+  assert.equal(localStorage.getItem('jessi-feedback-pending-2026-W42'), null);
+});
+
+test('el feedback sin conexión queda local y se reenvía al reconectar', async () => {
+  memory.clear();
+  const app = makeApp();
+  app.weekKey = () => '2026-W42';
+  app.state.rutinas = [{ _id: 'mie', nombre: 'Miércoles' }];
+  app.state.selected = 0;
+  app.state.view = 'detail';
+  app.state.detailEx = [{ nombre: 'Remo', unidadPeso: 'LB', series: [{ peso: '80', reps: '8' }] }];
+  app.updateExerciseFeedback(0, 'recovery', 'parcial');
+  assert.equal(app.state.syncState, 'error');
+  assert.equal(app.pendingFeedback('2026-W42').exerciseFeedback_mie_0.recovery, 'parcial');
+  const fresh = makeApp();
+  const writes = [];
+  fresh._db = {};
+  fresh._fs = { doc(_db, collection, id) { return { collection, id }; }, async setDoc(ref, patch) { writes.push({ ref, patch }); } };
+  fresh.replayPendingFeedback();
+  await fresh._syncPromise;
+  assert.equal(writes[0].patch.exerciseFeedback_mie_0.recovery, 'parcial');
+  assert.equal(localStorage.getItem('jessi-feedback-pending-2026-W42'), null);
+});
+
+test('un registro histórico conserva su origen no verificado', () => {
+  const app = makeApp();
+  app.weekKey = () => '2026-W42';
+  app.state.rutinas = [{ _id: 'lun', nombre: 'Lunes' }];
+  app.state.selected = 0;
+  app.state.view = 'detail';
+  app.state.detailEx = [{ nombre: 'Remo', unidadPeso: 'KG', series: [{ peso: '55', reps: '10' }] }];
+  app._sessionLogs = { lun: { startedAt: 1, series: [{ key: '0#0', ejercicio: 'Remo', serie: 1, peso: '40', reps: '8', unidadPeso: 'KG', recordedAt: 1 }] } };
+  const log = app.captureSession('lun', [], ['lun#0#0'], false);
+  assert.equal(log.series[0].peso, '40');
+  assert.equal(log.series[0].source, undefined);
+});
+
+test('miércoles muestra captura nueva vacía aunque la rutina tenga objetivos', () => {
+  const app = makeApp();
+  app.props = {};
+  app.state.loading = false;
+  app.state.rutinas = [{ _id: 'mie', nombre: 'Miércoles', ejercicios: [{ nombre: 'Remo', unidadPeso: 'LB', series: [{ peso: '40', reps: '9' }] }] }];
+  app.open(0);
+  let ex = app.renderVals().detail.ejercicios[0];
+  assert.equal(ex.series[0].peso, '40');
+  assert.equal(ex.actualSeries[0].peso, '');
+  assert.equal(ex.actualSeries[0].reps, '');
+  assert.equal(ex.actualSeries[0].unidadPeso, 'LB');
+  app.state.exDone = ['mie#0#0'];
+  ex = app.renderVals().detail.ejercicios[0];
+  assert.match(ex.feedbackStatus, /0\/1 SERIES/);
+});
+
+test('el análisis usa resultados explícitos y respeta la exclusión de bienestar', () => {
+  const app = makeApp();
+  app.weekKey = () => '2026-W42';
+  app.state.rutinas = [{ _id: 'mie', nombre: 'Miércoles' }];
+  app._progDocs = {
+    '2026-W42': {
+      doneIds: [], exDone: ['mie#0#0'],
+      sessionLog_mie: { dayName: 'Miércoles', series: [{ key: '0#0', ejercicio: 'Remo', serie: 1, peso: '40', reps: '9', unidadPeso: 'LB', source: 'explicit' }] },
+      exerciseFeedback_mie_0: { dayId: 'mie', exerciseIndex: 0, exerciseName: 'Remo', sets: [{ peso: '40', reps: '9', unidadPeso: 'LB' }], rir: '2', discomfort: true }
+    }
+  };
+  const without = app.buildAnalysisText('', '', false);
+  assert.match(without, /resultado real explícito/);
+  assert.match(without, /RIR: 2/);
+  assert.doesNotMatch(without, /molestia articular/);
+  assert.match(app.buildAnalysisText('', '', true), /molestia articular/);
 });
 
 test('una marca antigua no se convierte automáticamente en serie realizada', () => {

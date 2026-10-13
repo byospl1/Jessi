@@ -1,6 +1,6 @@
 # Piloto de progresión supervisada — propuesta
 
-Estado: propuesta preparada; algoritmo adaptativo todavía no activado. La semana del 12–18 de octubre de 2026 se actualizó con el método vigente por instrucción de Hugo. Se propone evaluar las cuatro semanas siguientes, del 19 de octubre al 15 de noviembre, con revisión antes de cada aplicación.
+Estado: la captura de resultados explícitos y sensaciones ya está incorporada a la página; el algoritmo adaptativo todavía no está activado. La semana del 12–18 de octubre de 2026 se actualizó con el método vigente por instrucción de Hugo. Se propone evaluar las cuatro semanas siguientes, del 19 de octubre al 15 de noviembre, con revisión antes de cada aplicación.
 
 ## Base y alcance
 
@@ -14,7 +14,7 @@ Jessi, después de cada ejercicio: peso y repeticiones realmente realizados por 
 
 Hugo: técnica aceptable o pendiente de revisión, rango de repeticiones y RIR objetivo por ejercicio, incremento de carga disponible, limitaciones vigentes y decisión de mantener/progresar/descargar. Una indicación concreta de Hugo tiene prioridad sobre la regla general.
 
-Para comenzar, estos datos pueden compartirse aquí; después se incorporan controles breves en la app. Las series realizadas deben conservarse separadas de los objetivos de la siguiente semana. Guardar una carga o marcar un día manualmente no basta para afirmar que se completó una serie.
+Los datos de Jessi se capturan en la app por ejercicio y se conservan separados de los objetivos de la siguiente semana. Guardar una carga objetivo o marcar un día manualmente no basta para afirmar que se completó una serie. Los campos del asesor y sus decisiones aún no están implementados.
 
 ## Reglas iniciales para depurar juntos
 

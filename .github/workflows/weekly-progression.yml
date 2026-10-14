@@ -1,18 +1,8 @@
-name: Progresión de Jessi con revisión
+name: Progresión anterior de Jessi — solo simulación
 
 on:
-  # El piloto requiere aprobación de Hugo; no hay disparo semanal automático.
+  # La aplicación de la regla antigua queda deshabilitada durante el piloto adaptativo.
   workflow_dispatch:
-    inputs:
-      mode:
-        description: 'Simular, aplicar una semana o establecer la línea base sin cambiar cargas'
-        type: choice
-        options: [preview, apply, baseline]
-        default: preview
-      allow_started:
-        description: 'Hugo autorizó actualizar una semana que ya comenzó'
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -32,22 +22,8 @@ jobs:
           node-version: '22'
       - name: Verificar comportamiento
         run: node --test tests/*.test.mjs
-      - name: Actualizar y verificar Firebase
+      - name: Simular sin escribir en Firebase
         env:
           FIREBASE_PROJECT_ID: asesoriasjessi
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
-          RUN_MODE: ${{ inputs.mode }}
-          ALLOW_STARTED: ${{ inputs.allow_started }}
-        run: |
-          case "$RUN_MODE" in
-            preview) node scripts/weekly-progression.mjs ;;
-            baseline) node scripts/weekly-progression.mjs --baseline --apply ;;
-            apply)
-              if [ "$ALLOW_STARTED" = 'true' ]; then
-                node scripts/weekly-progression.mjs --apply --allow-started
-              else
-                node scripts/weekly-progression.mjs --apply
-              fi
-              ;;
-            *) exit 1 ;;
-          esac
+        run: node scripts/weekly-progression.mjs

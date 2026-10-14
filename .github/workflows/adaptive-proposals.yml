@@ -1,0 +1,65 @@
+name: Propuestas adaptativas de Jessi (revisión obligatoria)
+
+on:
+  schedule:
+    # 15:00 UTC = 07:00/08:00 en Tijuana. Solo crea o actualiza borradores.
+    - cron: '0 15 * * *'
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Generar borrador, aprobar ejercicios concretos o rechazarlo'
+        type: choice
+        options: [draft, approve, reject]
+        default: draft
+      target_week:
+        description: 'Semana destino, por ejemplo 2026-W43 (solo aprobación/rechazo)'
+        type: string
+        required: false
+      draft_id:
+        description: 'ID exacto del borrador vigente (solo aprobación/rechazo)'
+        type: string
+        required: false
+      approved_exercises:
+        description: 'IDs explícitos separados por coma, por ejemplo dia#0,dia#1 (solo aprobación)'
+        type: string
+        required: false
+      technique_confirmed:
+        description: 'Confirmo que revisé la técnica de cada ejercicio seleccionado'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jessi-propuestas-adaptativas
+  cancel-in-progress: false
+
+jobs:
+  proposal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      FIREBASE_PROJECT_ID: asesoriasjessi
+      FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+      RUN_MODE: ${{ github.event_name == 'schedule' && 'draft' || inputs.action }}
+      TARGET_WEEK: ${{ inputs.target_week }}
+      DRAFT_ID: ${{ inputs.draft_id }}
+      APPROVED_EXERCISES: ${{ inputs.approved_exercises }}
+      TECHNIQUE_CONFIRMED: ${{ inputs.technique_confirmed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar el modelo
+        run: node --test tests/*.test.mjs
+      - name: Restringir decisiones al propietario
+        if: env.RUN_MODE != 'draft'
+        run: |
+          if [ "$GITHUB_ACTOR" != 'byospl1' ]; then
+            echo 'Solo el propietario puede aprobar o rechazar.' >&2
+            exit 1
+          fi
+      - name: Generar o revisar borrador en Firebase
+        run: node scripts/adaptive-progression.mjs

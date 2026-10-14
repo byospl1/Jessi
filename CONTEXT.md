@@ -15,8 +15,8 @@ App web de rutinas de gimnasio para una clienta real de coaching de Hugo ("Jessi
 - La app muestra la rutina almacenada en Firestore y registra progreso, sesiones marcadas, solicitudes de video y datos de bienestar. No calcula ni envía progresión semanal desde el navegador.
 - El correo semanal está retirado. Las funciones antiguas de correo fueron eliminadas del frontend.
 - El 13 de octubre se restauró la actualización de cargas mediante un script independiente y un workflow manual, con control de semana, commit atómico y verificación. Se aplicó un solo avance a los cuatro días de la semana 2026-W42; el historial y la cantidad de series se conservaron.
-- El 13 de octubre se incorporó a la página oficial la captura por ejercicio de series realmente realizadas y sensaciones, separada de los objetivos de la rutina. La próxima sesión (miércoles) ya puede recoger estos datos sin alterar pesos ni ejercicios. La progresión adaptativa sigue pendiente de revisión y aprobación.
-- Para las semanas siguientes se acordó proponer un piloto supervisado de un mes inspirado en las reglas públicas de RP Strength. Antes de aplicar cualquier cambio semanal, presentar la propuesta a Hugo y esperar su aprobación. No activar aumentos semanales sin revisión.
+- El 13 de octubre se incorporó a la página oficial la captura por ejercicio de series realmente realizadas y sensaciones, separada de los objetivos de la rutina. El generador adaptativo `reviewed-rp-v1` produce borradores para la semana siguiente a partir de estos datos; solo una decisión explícita de Hugo puede cambiar objetivos.
+- Para las semanas siguientes se acordó un piloto supervisado de un mes inspirado en principios públicos de progresión, no en código propietario de RP. El workflow diario genera borradores, no aumentos. La revisión se hace por ejercicio, con confirmación de técnica, huella de datos y commit condicional. El workflow de la regla anterior queda solo para simulación.
 
 ## 4. Decisiones Clave
 - `index.html` sigue siendo la página publicable autocontenida. La fuente se mantiene en `src/app.html` para poder revisar cambios y probarlos sin editar una línea JSON de gran tamaño.

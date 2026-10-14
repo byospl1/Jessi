@@ -1,6 +1,6 @@
 # Piloto de progresión supervisada — propuesta
 
-Estado: la captura de resultados explícitos y sensaciones ya está incorporada a la página; el algoritmo adaptativo todavía no está activado. La semana del 12–18 de octubre de 2026 se actualizó con el método vigente por instrucción de Hugo. Se propone evaluar las cuatro semanas siguientes, del 19 de octubre al 15 de noviembre, con revisión antes de cada aplicación.
+Estado: la captura y el generador de borradores adaptativos están implementados. La semana del 12–18 de octubre de 2026 se actualizó con el método anterior por instrucción de Hugo. El piloto de cuatro semanas, del 19 de octubre al 15 de noviembre, mantiene la aprobación humana obligatoria antes de cada cambio de rutina. El generador diario solo escribe un borrador; nunca modifica ejercicios ni cargas.
 
 ## Base y alcance
 
@@ -14,7 +14,17 @@ Jessi, después de cada ejercicio: peso y repeticiones realmente realizados por 
 
 Hugo: técnica aceptable o pendiente de revisión, rango de repeticiones y RIR objetivo por ejercicio, incremento de carga disponible, limitaciones vigentes y decisión de mantener/progresar/descargar. Una indicación concreta de Hugo tiene prioridad sobre la regla general.
 
-Los datos de Jessi se capturan en la app por ejercicio y se conservan separados de los objetivos de la siguiente semana. Guardar una carga objetivo o marcar un día manualmente no basta para afirmar que se completó una serie. Los campos del asesor y sus decisiones aún no están implementados.
+Los datos de Jessi se capturan en la app por ejercicio y se conservan separados de los objetivos de la siguiente semana. Guardar una carga objetivo o marcar un día manualmente no basta para afirmar que se completó una serie. La revisión del asesor se registra al aprobar o rechazar un borrador mediante GitHub Actions; todavía no hay una interfaz privada de asesor.
+
+## Modelo implementado (`reviewed-rp-v1`)
+
+Cada mañana el workflow lee las rutinas vigentes y el progreso de la semana actual y anterior. Guarda en `progreso/{semana_siguiente}.adaptiveDraft` una propuesta con evidencia, motivo y faltantes por ejercicio; si el input no cambió, no reescribe. No usa modelos de IA ni atribuye eficacia a la fórmula propietaria de RP.
+
+Para proponer un aumento exige: día cerrado, todas las series marcadas, carga/unidad/repeticiones reales completas y comparables con el objetivo, objetivo de repeticiones alcanzado, RIR al menos 2, dificultad no «muy difícil», recuperación «buena», sin molestia articular ni agujetas limitantes y sin pausas/descarga. Bombeo y comentario quedan como contexto. Si algo falta o es dudoso, mantiene el objetivo y señala la causa. El rango inicial es 8–12, salvo `progressionConfig.minReps/maxReps` por ejercicio.
+
+Si alguna serie objetivo está por debajo del máximo, propone +1 repetición en esas series sin cambiar peso ni volumen. Si todas están en el máximo, requiere dos exposiciones semanales comparables y un `progressionConfig.loadStep` y `loadStepUnit` aprobados; solo propone subir carga si el salto es positivo y no supera el 5% de cada carga, reiniciando al mínimo del rango. Sin salto configurado, pide revisión. No propone cambios de volumen ni descargas automáticas.
+
+La aprobación exige elegir IDs de ejercicios concretos y confirmar revisión de técnica. Antes de escribir, recalcula el borrador con Firestore, comprueba que la rutina no cambió, que la semana origen terminó o que todos los días están cerrados y que la semana destino no empezó. Aplica todos los cambios aprobados y el registro de decisión en un único commit condicional, luego verifica. Rechazar solo registra la decisión. La antigua acción de incremento quedó en modo simulación.
 
 ## Reglas iniciales para depurar juntos
 
@@ -49,8 +59,8 @@ Rango de partida sugerido para explorar: 8–12 repeticiones y aproximadamente 2
 
 No programar acercamiento obligatorio al fallo ni descarga por calendario sin la revisión de Hugo. La semana cuatro puede ser una descarga si el desempeño y la recuperación lo justifican.
 
-## Evaluación y siguiente implementación
+## Evaluación y mejoras pendientes
 
 Registrar cuántas propuestas aceptó/corrigió/rechazó Hugo, motivo de cada corrección, sesiones con datos suficientes, cumplimiento de los rangos y RIR, recuperación y tolerancia a los incrementos. El piloto mide si la herramienta ayuda a decidir; no permite atribuir cambios físicos al algoritmo en un mes.
 
-La implementación adaptativa deberá guardar feedback de alumna y asesor por separado, producir borradores pendientes y vincular cada aprobación a una versión exacta de la rutina. No aplicar una aprobación antigua a una rutina que cambió. Los botones del asesor requerirán distinguir su acceso del de la alumna.
+El feedback de la alumna y las decisiones del asesor se guardan separados; el borrador se vincula mediante huella y versiones exactas de rutina. Sigue pendiente una interfaz privada de asesor con autenticación, configuración de incrementos reales por máquina y validación clínica/técnica del piloto. No añadir un botón público de aprobación mientras Firebase permita lectura/escritura anónima.
